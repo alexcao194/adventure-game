@@ -1,0 +1,23 @@
+from framework.core.singleton import Singleton
+from framework.game.state.base_state import FallState
+class StateMachine(Singleton):
+    states = []        
+    def push(state):
+        state.init()
+        StateMachine.states.append(state)
+    def pop():
+        if(StateMachine.canPop()):
+            StateMachine.current_state.destroy()
+            StateMachine.states.pop()
+    def popUntil(name):
+        while(StateMachine.current_state.name != name and StateMachine.canPop()):
+            StateMachine.pop()
+    def canPop():
+        return StateMachine.states.__len__() > 1
+    def current_state():
+        if len(StateMachine.states) == 0:
+            return FallState()
+        return StateMachine.states[-1]
+
+
+    
