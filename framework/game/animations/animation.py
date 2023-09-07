@@ -10,8 +10,7 @@ delay - delay between frames
 '''
 class Animation:
     frame_count = 0
-    def __init__(self, name, src: str, frame_count: int, entity, delay: int = 0):
-        self.name = name
+    def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
         self.src = src
         self.frame_count = frame_count
         self.current_frame = 0
@@ -47,8 +46,8 @@ class Animation:
 Animation that plays once and stops.
 '''
 class ActionAnimation(Animation):
-    def __init__(self, name, src: str, frame_count: int, entity, delay: int = 0):
-        super().__init__(name, src, frame_count, entity, delay)
+    def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
+        super().__init__(src, frame_count, entity, delay)
         
     def reset(self):
         self.isStart = True
@@ -68,8 +67,8 @@ class ActionAnimation(Animation):
 Animation that plays repeatedly.
 '''
 class RepeatAnimation(Animation):
-    def __init__(self, name, src: str, frame_count: int, entity, delay: int = 0):
-        super().__init__(name, src, frame_count, entity, delay)
+    def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
+        super().__init__(src, frame_count, entity, delay)
 
         
 

@@ -4,28 +4,27 @@ from src.configs.assets import Assets
 import pygame
 
 class Player(Entity):
-    animations = None
-    current_animation = 'test2'
+    animation_manager = None
     def __init__(self, position: Vector2, hitbox: Vector2):
         super().__init__(position, hitbox)
-        self.animations = {
-            'test' : ActionAnimation("test", Assets.test, 8, self, delay=2),
-            'test2' : RepeatAnimation("test2", Assets.test2, 10, self, delay=2)
-        }
+        self.animation_manager = AnimationManager(
+        {
+            'test2' : ActionAnimation(Assets.test, 8, self, delay=2),
+        },
+        {
+            'test' : RepeatAnimation(Assets.test2, 10, self, delay=2),
+        },
+        'test'
+    )
     
     def update(self, event):
         super().update(event)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_0:
-                if(self.current_animation == 'test2'):
-                    self.current_animation = 'test'
-                    self.animations[self.current_animation].reset()
-
-        if(type(self.animations[self.current_animation]) == ActionAnimation and not self.animations[self.current_animation].isStart):
-            self.current_animation = 'test2'
-            self.animations[self.current_animation].reset()
+                if (self.animation_manager.current_action_animation == None):
+                    self.animation_manager.play_action('test2')
             
     def render(self, display):
         super().render(display)
-        self.animations[self.current_animation].render(display)
+        self.animation_manager.render(display)
         
