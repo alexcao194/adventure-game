@@ -1,7 +1,13 @@
 import math
 
+
+'''
+    Vector2 class
+    x: float - the x coordinate
+    y: float - the y coordinate
+'''
 class Vector2():
-    def __init__(self, x, y) -> None:
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
     

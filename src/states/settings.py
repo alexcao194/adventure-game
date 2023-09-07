@@ -2,7 +2,7 @@ from framework.framework import *
 
 class Settings(BaseState):
     def __init__(self):
-        super().__init__('settings', 'assets/textures/bg.jpg', WidgetGroup('settings', []))
+        super().__init__('assets/textures/bg.jpg')
     
     def update(self, event):
         return super().update(event)

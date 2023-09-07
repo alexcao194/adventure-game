@@ -47,7 +47,7 @@ class Application:
                 pygame.quit()
                 quit()
             else:
-                self.update(event.type)
+                self.update(event)
             updated = True
         if not updated:
-            self.update(pygame.NOEVENT)
+            self.update(pygame.event.Event(pygame.NOEVENT))

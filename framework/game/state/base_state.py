@@ -1,22 +1,27 @@
 from framework.core.logger import log_state
 from framework.utils.media_query import *
 from framework.game.widget.widget_group import WidgetGroup
+from framework.game.entity.entity_group import EntityGroup
 import pygame
 
+'''
+class BaseState
+name: str - the name of the state
+background: str - the path to the background image
+widgets: WidgetGroup - the widgets of the state
+'''
+
 class BaseState:
-    def __init__(self, name, background = '', widgets: WidgetGroup = WidgetGroup("no widget", [])):
-        self.name = name
+    def __init__(self, background = ''):
         self.background_asset = background
         self.background_image = None
-        self.widgets = widgets
 
 
     '''
     Update is called every frame.
     '''
     def update(self, event):
-        self.widgets.update(event)
-
+        pass
 
     '''
     Render is called every frame. 
@@ -24,7 +29,7 @@ class BaseState:
     def render(self, display):
         if(self.background_asset != ''):
             display.blit(self.background_image, (0, 0))
-        self.widgets.render(display)
+    
 
     '''
     Destroy is called when the state is destroyed.
@@ -47,5 +52,5 @@ class BaseState:
         log_state(self, "Initialized")
     
 class FallState(BaseState):
-    def __init__(self, name, background='', widgets: WidgetGroup = WidgetGroup("no widget", [])):
-        super().__init__(name, background, widgets)
+    def __init__(self, background=''):
+        super().__init__(background)
