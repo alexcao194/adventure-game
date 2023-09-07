@@ -1,13 +1,13 @@
-'''
-When you want to use animation, you must create a AnimationManager object.
-AnimationManager has two dictionaries: action_animation and repeat_animation.
-action_animation is a dictionary that contains ActionAnimation objects.
-repeat_animation is a dictionary that contains RepeatAnimation objects.
-
-You can use play_action() to play an action animation.
-You can use change_animation() to change a repeat animation.
-'''
 class AnimationManager:
+    '''
+    When you want to use animation, you must create a AnimationManager object.
+    AnimationManager has two dictionaries: action_animation and repeat_animation.
+    action_animation is a dictionary that contains ActionAnimation objects.
+    repeat_animation is a dictionary that contains RepeatAnimation objects.
+
+    You can use play_action() to play an action animation.
+    You can use change_animation() to change a repeat animation.
+    '''
     current_repeat_animation = None
     current_action_animation = None
     def __init__(self, action_animation: dict, repeat_animation: dict, current_animation: str):

@@ -4,43 +4,45 @@ from framework.game.widget.widget_group import WidgetGroup
 from framework.game.entity.entity_group import EntityGroup
 import pygame
 
-'''
-class BaseState
-name: str - the name of the state
-background: str - the path to the background image
-widgets: WidgetGroup - the widgets of the state
-'''
-
 class BaseState:
+    '''
+    class BaseState
+    background: str - the path to the background image
+    widgets: WidgetGroup - the widgets of the state
+    '''
     def __init__(self, background = ''):
         self.background_asset = background
         self.background_image = None
 
 
-    '''
-    Update is called every frame.
-    '''
+
     def update(self, event):
+        '''
+        Update is called every frame.
+        '''
         pass
 
-    '''
-    Render is called every frame. 
-    '''
+    
     def render(self, display):
+        '''
+        Render is called every frame. 
+        '''
         if(self.background_asset != ''):
             display.blit(self.background_image, (0, 0))
     
 
-    '''
-    Destroy is called when the state is destroyed.
-    '''
+    
     def destroy(self):
+        '''
+        Destroy is called when the state is destroyed.
+        '''
         log_state(self, "Destroyed")
 
-    '''
-    Init is called when the state is created.
-    '''
+    
     def init(self):
+        '''
+        Init is called when the state is created.
+        '''
         self.background_image = pygame.image.load(self.background_asset)
         width = self.background_image.get_width()
         height = self.background_image.get_height()

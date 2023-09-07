@@ -1,13 +1,12 @@
 from framework.core.singleton import Singleton
 from framework.game.state.base_state import FallState
 
-'''
-class StateMachine
-states: list - the list of states
-navigate between states
-'''
-
 class StateMachine(Singleton):
+    '''
+    class StateMachine
+    states: list - the list of states
+    navigate between states
+    '''
     states = []        
     def push(state):
         state.init()

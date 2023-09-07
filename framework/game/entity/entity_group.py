@@ -1,12 +1,11 @@
 from framework.game.entity.entity import *
 
 
-'''
-EntityGroup is a group of entities.
-name: str - the name of the Entity group
-entities: list - the list of entities
-'''
 class EntityGroup:
+    '''
+    EntityGroup is a group of entities.
+    entities: list - the list of entities
+    '''
     def __init__(self):
         self.entities = []
     

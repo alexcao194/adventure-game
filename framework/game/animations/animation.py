@@ -1,14 +1,14 @@
 import pygame
 
-'''
-Base class for all animations.
-name - name of the animation
-src - path to the folder containing the frames
-frame_count - number of frames in the animation
-entity - the entity that the animation is attached to
-delay - delay between frames
-'''
+
 class Animation:
+    '''
+    Base class for all animations.
+    src - path to the folder containing the frames
+    frame_count - number of frames in the animation
+    entity - the entity that the animation is attached to
+    delay - delay between frames
+    '''
     frame_count = 0
     def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
         self.src = src
@@ -42,10 +42,11 @@ class Animation:
         display.blit(self.next_frame(), self.entity.position.to_tuple())
 
 
-'''
-Animation that plays once and stops.
-'''
+
 class ActionAnimation(Animation):
+    '''
+    Animation that plays once and stops.
+    '''
     def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
         super().__init__(src, frame_count, entity, delay)
         
@@ -63,10 +64,11 @@ class ActionAnimation(Animation):
         super().render(display)
 
 
-'''
-Animation that plays repeatedly.
-'''
+
 class RepeatAnimation(Animation):
+    '''
+    Animation that plays repeatedly.
+    '''
     def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
         super().__init__(src, frame_count, entity, delay)
 

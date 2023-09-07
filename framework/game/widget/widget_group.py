@@ -1,12 +1,10 @@
 from framework.game.widget.widget import Widget
 
-
-'''
-WidgetGroup is a group of widgets.
-name: str - the name of the widget group
-widgets: list - the list of widgets
-'''
 class WidgetGroup:
+    '''
+    WidgetGroup is a group of widgets.
+    widgets: list - the list of widgets
+    '''
     def __init__(self):
         self.widgets = []
     
