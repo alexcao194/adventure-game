@@ -1,7 +1,5 @@
 import math
 
-
-
 class Vector2():
     '''
     Vector2 class
@@ -17,3 +15,4 @@ class Vector2():
     
 def distance(a : Vector2, b : Vector2):
     return math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2)
+

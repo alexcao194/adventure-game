@@ -29,6 +29,9 @@ class AnimationManager:
             self.repeat_animation[self.current_repeat_animation].reset()
     
     def play_action(self, animation: str):
+        if(self.current_action_animation != None):
+            print("Action animation is already playing, skipped", self.current_action_animation)
+            return
         if(animation in self.action_animation.keys()):
             self.current_action_animation = animation
             self.action_animation[self.current_action_animation].reset()

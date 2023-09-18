@@ -9,15 +9,15 @@ class EntityGroup:
     def __init__(self):
         self.entities = []
     
-    def add(self, Entity: Entity):
-        self.entities.append(Entity)
+    def add(self, entity: Entity):
+        self.entities.append(entity)
     
-    def remove(self, Entity: Entity):
-        self.entities.remove(Entity)
+    def remove(self, entity: Entity):
+        self.entities.remove(entity)
     
     def render(self, display):
-        for Entity in self.entities:
-            Entity.render(display)
+        for entity in self.entities:
+            entity.render(display)
     def update(self, event):
-        for Entity in self.entities:
-            Entity.update(event) 
+        for entity in self.entities:
+            entity.update(event)

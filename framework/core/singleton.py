@@ -4,3 +4,6 @@ class Singleton:
         if cls.instance is None:
             cls.instance = super().__new__(cls)
         return cls.instance
+
+
+# singleton pattern

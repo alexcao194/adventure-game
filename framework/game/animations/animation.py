@@ -11,6 +11,8 @@ class Animation:
     '''
     frame_count = 0
     def __init__(self, src: str, frame_count: int, entity, delay: int = 0):
+        if(self.__class__.__name__ == 'Animation'):
+            raise Exception("Animation cannot be instantiated")
         self.src = src
         self.frame_count = frame_count
         self.current_frame = 0
@@ -22,7 +24,11 @@ class Animation:
 
     def init(self):
         for i in range(self.frame_count):
-            self.images.append(pygame.image.load(self.src + str(i) + '.png'))
+            image = pygame.image.load(self.src + str(i) + '.png')
+            width = image.get_width()
+            height = image.get_height()
+            image = pygame.transform.scale(image, self.entity.hitbox.to_tuple())            
+            self.images.append(image)
     
     def next_frame(self):
         if self.delay_count < self.delay:

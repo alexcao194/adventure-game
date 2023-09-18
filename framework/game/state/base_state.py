@@ -1,4 +1,4 @@
-from framework.core.logger import log_state
+from framework.core.logger import log
 from framework.utils.media_query import *
 from framework.game.widget.widget_group import WidgetGroup
 from framework.game.entity.entity_group import EntityGroup
@@ -8,9 +8,10 @@ class BaseState:
     '''
     class BaseState
     background: str - the path to the background image
-    widgets: WidgetGroup - the widgets of the state
     '''
     def __init__(self, background = ''):
+        if(self.__class__.__name__ == 'BaseState'):
+            raise Exception("BaseState cannot be instantiated")
         self.background_asset = background
         self.background_image = None
 
@@ -36,7 +37,7 @@ class BaseState:
         '''
         Destroy is called when the state is destroyed.
         '''
-        log_state(self, "Destroyed")
+        log(self, "Destroyed")
 
     
     def init(self):
@@ -51,7 +52,7 @@ class BaseState:
             self.background_image = pygame.transform.scale(self.background_image, (MediaQuery.size.x, (MediaQuery.size.x / width) * height))
         if(height < MediaQuery.size.y):
             self.background_image = pygame.transform.scale(self.background_image, ((MediaQuery.size.y / height) * width, MediaQuery.size.y))
-        log_state(self, "Initialized")
+        log(self, "Initialized")
     
 class FallState(BaseState):
     def __init__(self, background=''):

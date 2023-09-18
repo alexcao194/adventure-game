@@ -9,20 +9,23 @@ class Player(Entity):
         super().__init__(position, hitbox)
         self.animation_manager = AnimationManager(
         {
-            'test2' : ActionAnimation(Assets.test, 8, self, delay=2),
+            'roll': ActionAnimation(Assets.roll, 5, self, delay=2),
+            'test': ActionAnimation(Assets.test, 10, self, delay=2),
         },
         {
-            'test' : RepeatAnimation(Assets.test2, 10, self, delay=2),
+            'walk': RepeatAnimation(Assets.walk, 8, self, delay=2),
+            'idle': RepeatAnimation(Assets.idle, 6, self, delay=2),
+            'test2': RepeatAnimation(Assets.test2, 10, self, delay=2),
         },
-        'test'
+        'idle'
     )
     
     def update(self, event):
         super().update(event)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_0:
-                if (self.animation_manager.current_action_animation == None):
-                    self.animation_manager.play_action('test2')
+                self.animation_manager.play_action('roll')
+                    
             
     def render(self, display):
         super().render(display)
