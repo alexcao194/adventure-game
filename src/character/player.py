@@ -22,11 +22,30 @@ class Player(Entity):
     
     def update(self, event):
         super().update(event)
+        self.move()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_0:
+            if event.key == pygame.K_z:
                 self.animation_manager.play_action('roll')
-                    
             
+            if event.key == pygame.K_x:
+                self.animation_manager.play_action('test')
+
+            if event.key == pygame.K_c:
+                self.animation_manager.change_animation('test2')
+            
+        
+                    
+    def move(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.position.x -= 5
+            self.animation_manager.change_animation('walk')
+        elif keys[pygame.K_RIGHT]:
+            self.position.x += 5
+            self.animation_manager.change_animation('walk')
+        else:
+            self.animation_manager.change_animation('idle')
+
     def render(self, display):
         super().render(display)
         self.animation_manager.render(display)

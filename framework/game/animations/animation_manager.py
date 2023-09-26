@@ -39,6 +39,8 @@ class AnimationManager:
             raise Exception("Animation not found")
     
     def change_animation(self, animation: str):
+        if(self.current_repeat_animation == animation):
+            return
         if(animation in self.repeat_animation.keys()):
             self.current_repeat_animation = animation
             self.repeat_animation[self.current_repeat_animation].reset()

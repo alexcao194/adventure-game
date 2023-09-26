@@ -25,8 +25,6 @@ class Animation:
     def init(self):
         for i in range(self.frame_count):
             image = pygame.image.load(self.src + str(i) + '.png')
-            width = image.get_width()
-            height = image.get_height()
             image = pygame.transform.scale(image, self.entity.hitbox.to_tuple())            
             self.images.append(image)
     
