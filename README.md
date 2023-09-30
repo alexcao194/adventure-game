@@ -39,3 +39,6 @@ Nhóm bài tập: 06
 - `git checkout -b <tên-branch>`: tạo branch mới và chuyển sang đó (tên branch không được trùng nhau)
 - `git branch -d <tên-branch>`: xoá branch được chỉ định khỏi máy (đương nhiên toàn bộ thay đổi có ở nhánh này cũng sẽ mất hết)
 - **Nếu không quen có thể sử dụng GUI của VSC**
+
+## Documents
+- Để hiểu hơn về project và các coding convention trong project, vui lòng đọc [tài liệu](document.md) được biên soạn bởi Cao Việt Đức
