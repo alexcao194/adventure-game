@@ -15,6 +15,7 @@ from framework.utils.media_query import *
 from framework.game.widget.widget import *
 from framework.game.widget.widget_group import *
 from framework.game.widget.button import *
+from framework.game.widget.image import *
 from framework.game.widget.text import *
 from framework.game.entity.entity import *
 from framework.game.entity.entity_group import *
