@@ -9,11 +9,14 @@ class Button(Widget):
     Button is a widget that can be clicked.
     callback: callable - the function that is called when the button is clicked
     '''
-    def __init__(self, position: Vector2, size: Vector2, callback: callable, text: str, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
+    def __init__(self, position: Vector2, size: Vector2, callback: callable, text: str, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size, delay_time: int = 2):
         super().__init__(position, size)
         self.callback = callback
         self.font = pygame.font.Font(font, font_size)
         self.text = text
+        self.delay_time = delay_time
+        self.interactable = True
+        self.interact_time = 2
 
     def render(self, display):
         if self.text:
@@ -21,14 +24,20 @@ class Button(Widget):
             display.blit(text, (self.position.x + self.size.x / 2 - text.get_width() / 2, self.position.y + self.size.y / 2 - text.get_height() / 2))
 
     def update(self, event):
+        if not self.interactable:
+            self.interact_time -=  1 / 60
+            if self.interact_time <= 0:
+                self.interactable = True
+                self.interact_time = 2
+            return
+        
         self.handle_events(event)
         
     def handle_events(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.callback()
-                return True
-        return False
+                self.interactable = False
     
 
 class ImageButton(Button):
