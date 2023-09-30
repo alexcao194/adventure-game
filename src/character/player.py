@@ -40,9 +40,11 @@ class Player(Entity):
         if keys[pygame.K_LEFT]:
             self.position.x -= 5
             self.animation_manager.change_animation('walk')
+            self.fliped = True
         elif keys[pygame.K_RIGHT]:
             self.position.x += 5
             self.animation_manager.change_animation('walk')
+            self.fliped = False
         else:
             self.animation_manager.change_animation('idle')
 

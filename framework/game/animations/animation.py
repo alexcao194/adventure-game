@@ -16,7 +16,7 @@ class Animation:
         self.src = src
         self.frame_count = frame_count
         self.current_frame = 0
-        self.images = []
+        self.images = [[], []]
         self.entity = entity
         self.delay = delay
         self.delay_count = 0
@@ -26,7 +26,9 @@ class Animation:
         for i in range(self.frame_count):
             image = pygame.image.load(self.src + str(i) + '.png')
             image = pygame.transform.scale(image, self.entity.hitbox.to_tuple())            
-            self.images.append(image)
+            self.images[0].append(image)
+            image = pygame.transform.flip(image, True, False)
+            self.images[1].append(image)
     
     def next_frame(self):
         if self.delay_count < self.delay:
@@ -36,7 +38,7 @@ class Animation:
             self.current_frame += 1
             if(self.current_frame >= self.frame_count):
                 self.current_frame = 0
-        return self.images[self.current_frame]
+        return self.images[self.entity.fliped][self.current_frame]
 
     def reset(self):
         self.current_frame = 0
