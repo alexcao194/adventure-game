@@ -3,6 +3,14 @@ from framework.utils.media_query import MediaQuery
 import pygame
 
 class Text(Widget):
+    '''
+    Text is a widget that displays text.
+    text: str - the text to display
+    font: str - the path to the font file
+    font_size: int - the size of the font
+    color: tuple - the color of the text
+    '''
+    
     def __init__(self, position, size, text, font: str = MediaQuery.font_family, font_size: int = MediaQuery.font_size, color: tuple = (255, 255, 255)):
         super().__init__(position, size)
         self.text = text

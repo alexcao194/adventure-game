@@ -1,6 +1,9 @@
 from framework.game.entity.entity import Entity
 
 class Texture:
+    '''
+    Texture is a class that represents a texture of an entity.
+    '''
     def __init__(self, texture: str, entity: Entity):
         self.texture = texture
         self.entity = entity
@@ -12,4 +15,3 @@ class Texture:
         
     def render(self, display):
         display.blit(self.image, self.entity.position.to_tuple())
-        
