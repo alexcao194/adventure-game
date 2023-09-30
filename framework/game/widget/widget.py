@@ -10,7 +10,7 @@ class Widget:
     def __init__(self, position: Vector2, size: Vector2):
         self.position = position
         self.size = size
-        self.rect = pygame.Rect(position.to_tuple(), size)
+        self.rect = pygame.Rect(position.to_tuple(), size.to_tuple())
     
     def render(self, display):
         pass
