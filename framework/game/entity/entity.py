@@ -15,6 +15,7 @@ class Entity:
         self.hitbox = hitbox
         self.rect = pygame.Rect(position.to_tuple(), hitbox.to_tuple())
         self.isActive = True
+        self.fliped = False
     
     def render(self, display):
         pass
