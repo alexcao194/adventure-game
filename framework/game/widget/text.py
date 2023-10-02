@@ -1,4 +1,5 @@
 from framework.game.widget.widget import Widget
+from framework.utils.vector2 import Vector2
 from framework.utils.media_query import MediaQuery
 import pygame
 
@@ -11,8 +12,12 @@ class Text(Widget):
     color: tuple - the color of the text
     '''
     
-    def __init__(self, position, size, text, font: str = MediaQuery.font_family, font_size: int = MediaQuery.font_size, color: tuple = (255, 255, 255)):
-        super().__init__(position, size)
+    def __init__(self, text: str = None, position: Vector2 = None, size: Vector2 = None, font: str = MediaQuery.font_family, font_size: int = MediaQuery.font_size, color: tuple = (255, 255, 255)):
+        if(text == None):
+            raise Exception("Text must have a text")
+        if(font_size < 0):
+            raise Exception("Font size must be greater than 0")
+        super().__init__(position=position, size=size)
         self.text = text
         self.font = pygame.font.Font(font, font_size)
         self.color = color

@@ -8,6 +8,14 @@ class Widget:
     size: Vector2 - the size of the widget
     '''
     def __init__(self, position: Vector2, size: Vector2):
+        if(self.__class__.__name__ == 'Widget'):
+            raise Exception("Widget cannot be instantiated")
+        if(position == None):
+            raise Exception("Widget must have a position")
+        if(size == None):
+            raise Exception("Widget must have a size")
+        if(not size.is_positive()):
+            raise Exception("Size must be positive")
         self.position = position
         self.size = size
         self.rect = pygame.Rect(position.to_tuple(), size.to_tuple())

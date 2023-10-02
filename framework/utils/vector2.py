@@ -26,7 +26,15 @@ class Vector2():
         return f"Vector2({self.x}, {self.y})"
 
     def __eq__(self, other):
+        if not isinstance(other, Vector2):
+            return False
         return self.x == other.x and self.y == other.y
+
+    def is_negative(self):
+        return self.x < 0 or self.y < 0
+
+    def is_positive(self):
+        return self.x > 0 or self.y > 0
     
 def distance(a : Vector2, b : Vector2):
     return math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2)

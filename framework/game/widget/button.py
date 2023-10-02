@@ -9,8 +9,16 @@ class Button(Widget):
     Button is a widget that can be clicked.
     callback: callable - the function that is called when the button is clicked
     '''
-    def __init__(self, position: Vector2, size: Vector2, callback: callable, text: str, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size, delay_time: int = 2):
-        super().__init__(position, size)
+    def __init__(self, text: str = None, callback: callable = None, size: Vector2 = None, position: Vector2 = Vector2(0, 0), font = MediaQuery.font_family, font_size: int = MediaQuery.font_size, delay_time: int = 2):
+        super().__init__(position=position, size=size)
+        if(text == None):
+            raise Exception("Button must have a text")
+        if not callable(callback):
+            raise Exception("Callback must be callable")
+        if(delay_time < 0):
+            raise Exception("Delay time must be greater than 0")
+        if(font_size < 0):
+            raise Exception("Font size must be greater than 0")
         self.callback = callback
         self.font = pygame.font.Font(font, font_size)
         self.text = text
@@ -45,10 +53,12 @@ class ImageButton(Button):
     ImageButton is a button that has an image as background.
     background: str - the path to the background image
     '''
-    def __init__(self, position: Vector2, background: str, callback, scale = 1, text = None, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
+    def __init__(self, background: str = None, callback: callable = None, position: Vector2 = None, scale = 1, text = None, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
+        if(background == None):
+            raise Exception("ImageButton must have a background")
         self.image = pygame.image.load(background)
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
-        super().__init__(position, Vector2(self.image.get_size()[0], self.image.get_size()[1]), callback, text, font, font_size)
+        super().__init__(text=text, callback=callback, position=position, size=Vector2(self.image.get_width(), self.image.get_height()), font=font, font_size=font_size)
     
     def render(self, display):
         display.blit(self.image, self.position.to_tuple())

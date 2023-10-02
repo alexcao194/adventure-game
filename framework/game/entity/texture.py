@@ -4,7 +4,11 @@ class Texture:
     '''
     Texture is a class that represents a texture of an entity.
     '''
-    def __init__(self, texture: str, entity: Entity):
+    def __init__(self, texture: str = None, entity = None):
+        if(texture == None):
+            raise Exception("Texture must have a texture source")
+        if(entity == None):
+            raise Exception("Texture must have an entity")
         self.texture = texture
         self.entity = entity
         self.init()

@@ -9,9 +9,11 @@ class BaseState:
     class BaseState
     background: str - the path to the background image
     '''
-    def __init__(self, background):
+    def __init__(self, background: str = None):
         if(self.__class__.__name__ == 'BaseState'):
             raise Exception("BaseState cannot be instantiated")
+        if(background == None):
+            raise Exception("BaseState must have a background")
         self.background_asset = background
         self.background_image = None
         self.widget_group = WidgetGroup()
