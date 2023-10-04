@@ -9,11 +9,15 @@ class BaseState:
     class BaseState
     background: str - the path to the background image
     '''
-    def __init__(self, background = ''):
+    def __init__(self, background: str = None):
         if(self.__class__.__name__ == 'BaseState'):
             raise Exception("BaseState cannot be instantiated")
+        if(background == None):
+            raise Exception("BaseState must have a background")
         self.background_asset = background
         self.background_image = None
+        self.widget_group = WidgetGroup()
+        self.entity_group = EntityGroup()
 
 
 
@@ -21,7 +25,8 @@ class BaseState:
         '''
         Update is called every frame.
         '''
-        pass
+        self.widget_group.update(event)
+        self.entity_group.update(event)
 
     
     def render(self, display):
@@ -30,6 +35,8 @@ class BaseState:
         '''
         if(self.background_asset != ''):
             display.blit(self.background_image, (0, 0))
+        self.widget_group.render(display)
+        self.entity_group.render(display)
     
 
     

@@ -8,4 +8,6 @@ class MediaQuery(Singleton):
     '''
     size = Vector2(1200, 800)
     aspect_ratio = size.x / size.y
+    font_family = None
+    font_size = 32
     

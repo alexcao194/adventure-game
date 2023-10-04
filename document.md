@@ -23,16 +23,16 @@ Có 2 cách vẽ entity:
 - Sử dụng hệ thống animation với **Animation Manager**
 	```python
 	self.animation_manager = AnimationManager(
-	        {
+	        action_animation = {
 	            'roll': ActionAnimation(Assets.roll, 5, self, delay=2),
 	            'test': ActionAnimation(Assets.test, 10, self, delay=2),
 	        },
-	        {
+	        repeat_animation = {
 	            'walk': RepeatAnimation(Assets.walk, 8, self, delay=2),
 	            'idle': RepeatAnimation(Assets.idle, 6, self, delay=2),
 	            'test2': RepeatAnimation(Assets.test2, 10, self, delay=2),
 	        },
-	        'idle'
+	        current_animation = 'idle'
 	    )
 	```
 	Trong đó tham số thứ 3 phải là tên một RepeatAnimation đại diện cho trạng thái khởi tạo của nhân vật.

@@ -8,11 +8,17 @@ class AnimationManager:
     You can use play_action() to play an action animation.
     You can use change_animation() to change a repeat animation.
     '''
-    current_repeat_animation = None
-    current_action_animation = None
-    def __init__(self, action_animation: dict, repeat_animation: dict, current_animation: str):
+    def __init__(self, action_animation: dict = None, repeat_animation: dict = None, current_animation: str = None):
+        if(action_animation == None):
+            raise Exception("AnimationManager must have action_animation")
+        if(repeat_animation == None):
+            raise Exception("AnimationManager must have repeat_animation")
+        if(current_animation == None):
+            raise Exception("AnimationManager must have current_animation")
         self.action_animation = action_animation
         self.repeat_animation = repeat_animation
+        self.current_repeat_animation = None
+        self.current_action_animation = None
         self.current_repeat_animation = current_animation
         if(current_animation not in repeat_animation.keys()):
             raise Exception("current_animation must be in repeat_animation")
