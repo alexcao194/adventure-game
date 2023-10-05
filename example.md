@@ -149,4 +149,4 @@ class Menu(BaseState):
 
 And that's it! You can run the game by running `python main.py` in the root directory. 
 We will see this **shit**:
-![DemoScreen](https://cdn.discordapp.com/attachments/960780341952544798/1159540448403148890/image.pngex=65316532&is=651ef032&hm=a61c72505360f37d07ec4695459a537165ed0a81ae7e02c4d8e588cf44234750&)
+![DemoScreen](https://cdn.discordapp.com/attachments/960780341952544798/1159540448403148890/image.png?ex=65316532&is=651ef032&hm=a61c72505360f37d07ec4695459a537165ed0a81ae7e02c4d8e588cf44234750&)
