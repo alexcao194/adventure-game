@@ -13,16 +13,20 @@ class Image(Widget):
             raise Exception("Image must have an image")
         if(not scale.is_positive()):
             raise Exception("Scale must be positive")
-        super().__init__(position=position, size=size)
         self.image = src
         self.scale = scale
-        self.init()
+        self.__init_image__()
+        if(size == None):
+            self.size = Vector2(self.image.get_size()[0], self.image.get_size()[1])
+        else:
+            self.size = size
+        super().__init__(position=position, size=self.size)
     
-    def init(self):
+    def __init_image__(self):
         self.image = pygame.image.load(self.image)
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * self.scale.x), int(self.image.get_height() * self.scale.y)))
         self.size = Vector2(self.image.get_size()[0], self.image.get_size()[1])
     
-    def render(self, display):
+    def __render__(self, display):
         display.blit(self.image, (self.position.x + self.size.x / 2 - self.image.get_width() / 2, self.position.y + self.size.y / 2 - self.image.get_height() / 2))
     

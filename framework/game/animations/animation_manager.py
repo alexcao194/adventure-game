@@ -23,16 +23,16 @@ class AnimationManager:
         if(current_animation not in repeat_animation.keys()):
             raise Exception("current_animation must be in repeat_animation")
 
-    def render(self, display):
+    def __render__(self, display):
         if(self.current_action_animation != None):
-            self.action_animation[self.current_action_animation].render(display)
+            self.action_animation[self.current_action_animation].__render__(display)
         else:
-            self.repeat_animation[self.current_repeat_animation].render(display)
+            self.repeat_animation[self.current_repeat_animation].__render__(display)
 
             
         if(self.current_action_animation != None and self.action_animation[self.current_action_animation].isStart == False):
             self.current_action_animation = None
-            self.repeat_animation[self.current_repeat_animation].reset()
+            self.repeat_animation[self.current_repeat_animation].__reset__()
     
     def play_action(self, animation: str):
         if(self.current_action_animation != None):
@@ -40,7 +40,7 @@ class AnimationManager:
             return
         if(animation in self.action_animation.keys()):
             self.current_action_animation = animation
-            self.action_animation[self.current_action_animation].reset()
+            self.action_animation[self.current_action_animation].__reset__()
         else:
             raise Exception("Animation not found")
     
@@ -49,6 +49,6 @@ class AnimationManager:
             return
         if(animation in self.repeat_animation.keys()):
             self.current_repeat_animation = animation
-            self.repeat_animation[self.current_repeat_animation].reset()
+            self.repeat_animation[self.current_repeat_animation].__reset__()
         else:
             raise Exception("Animation not found")

@@ -25,15 +25,15 @@ class Application:
         while self.isActive:
             self.clock.tick(60)
             self.handle_events()
-            self.render(self.display)
+            self.__render__(self.display)
     '''
     This method is responsible for updating the game.
     '''
-    def update(self, event):
-        StateMachine.current_state().update(event)
+    def __update__(self, event):
+        StateMachine.__current_state__().__update__(event)
 
-    def render(self, display):
-        StateMachine.current_state().render(display)
+    def __render__(self, display):
+        StateMachine.__current_state__().__render__(display)
         pygame.display.flip()
 
     """
@@ -47,7 +47,7 @@ class Application:
                 pygame.quit()
                 quit()
             else:
-                self.update(event)
+                self.__update__(event)
             updated = True
         if not updated:
-            self.update(pygame.event.Event(pygame.NOEVENT))
+            self.__update__(pygame.event.Event(pygame.NOEVENT))

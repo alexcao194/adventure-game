@@ -1,4 +1,5 @@
 from framework.game.entity.entity import Entity
+import pygame
 
 class Texture:
     '''
@@ -11,11 +12,11 @@ class Texture:
             raise Exception("Texture must have an entity")
         self.texture = texture
         self.entity = entity
-        self.init()
+        self.__init_image__()
     
-    def init(self):
+    def __init_image__(self):
         self.image = pygame.image.load(self.texture)
         self.image = pygame.transform.scale(self.image, self.entity.hitbox.to_tuple())
         
-    def render(self, display):
+    def __render__(self, display):
         display.blit(self.image, self.entity.position.to_tuple())

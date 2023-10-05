@@ -9,7 +9,7 @@ class Button(Widget):
     Button is a widget that can be clicked.
     callback: callable - the function that is called when the button is clicked
     '''
-    def __init__(self, text: str = None, callback: callable = None, size: Vector2 = None, position: Vector2 = Vector2(0, 0), font = MediaQuery.font_family, font_size: int = MediaQuery.font_size, delay_time: int = 2):
+    def __init__(self, text: str = None, callback: callable = None, size: Vector2 = None, position: Vector2 = Vector2(0, 0), font = MediaQuery.font_family, font_size: int = MediaQuery.font_size, delay_time: int = 1):
         super().__init__(position=position, size=size)
         if(text == None):
             raise Exception("Button must have a text")
@@ -26,12 +26,12 @@ class Button(Widget):
         self.interactable = True
         self.interact_time = 2
 
-    def render(self, display):
+    def __render__(self, display):
         if self.text:
             text = self.font.render(self.text, True, (255, 255, 255))
             display.blit(text, (self.position.x + self.size.x / 2 - text.get_width() / 2, self.position.y + self.size.y / 2 - text.get_height() / 2))
 
-    def update(self, event):
+    def __update__(self, event):
         if not self.interactable:
             self.interact_time -=  1 / 60
             if self.interact_time <= 0:
@@ -39,9 +39,9 @@ class Button(Widget):
                 self.interact_time = 2
             return
         
-        self.handle_events(event)
+        self.__handle_events__(event)
         
-    def handle_events(self, event):
+    def __handle_events__(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.callback()
@@ -53,14 +53,18 @@ class ImageButton(Button):
     ImageButton is a button that has an image as background.
     background: str - the path to the background image
     '''
-    def __init__(self, background: str = None, callback: callable = None, position: Vector2 = None, scale = 1, text = None, font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
+    def __init__(self, background: str = None, callback: callable = None, size:Vector2 = None, position: Vector2 = None, scale = 1, text = "", font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
         if(background == None):
             raise Exception("ImageButton must have a background")
         self.image = pygame.image.load(background)
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
-        super().__init__(text=text, callback=callback, position=position, size=Vector2(self.image.get_width(), self.image.get_height()), font=font, font_size=font_size)
+        if(size == None):
+            self.size = Vector2(self.image.get_width(), self.image.get_height())
+        else:
+            self.size = size
+        super().__init__(text=text, callback=callback, position=position, size=self.size, font=font, font_size=font_size)
     
-    def render(self, display):
+    def __render__(self, display):
         display.blit(self.image, self.position.to_tuple())
-        super().render(display)
+        super().__render__(display)
         

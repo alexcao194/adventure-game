@@ -30,9 +30,9 @@ class CheckBox(Widget):
             raise Exception("Callback must be callable")
         self.selected = False
         self.callback = callback
-        self.init()
+        self.__init_image__()
     
-    def init(self):
+    def __init_image__(self):
         self.selected_image = pygame.image.load(self.selected_src)
         pygame.transform.scale(self.selected_image, (self.size.x, self.size.y))
         self.unselected_image = pygame.image.load(self.unselected_src)
@@ -40,13 +40,13 @@ class CheckBox(Widget):
         if(self.selected_image.get_size() != self.unselected_image.get_size()):
             raise Exception("Selected and unselected images must have the same size")
 
-    def render(self, display):
+    def __render__(self, display):
         if(self.selected):
             display.blit(self.selected_image, (self.position.x + self.size.x / 2 - self.selected_image.get_width() / 2, self.position.y + self.size.y / 2 - self.selected_image.get_height() / 2))
         else:
             display.blit(self.unselected_image, (self.position.x + self.size.x / 2 - self.unselected_image.get_width() / 2, self.position.y + self.size.y / 2 - self.unselected_image.get_height() / 2))
     
-    def update(self, event):
+    def __update__(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = not self.selected

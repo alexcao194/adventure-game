@@ -35,9 +35,10 @@ class Vector2():
 
     def is_positive(self):
         return self.x > 0 or self.y > 0
+
+    def distance(self, other):
+        return math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)
     
-def distance(a : Vector2, b : Vector2):
-    return math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2)
 
 
 
