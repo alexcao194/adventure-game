@@ -41,3 +41,6 @@ Có 2 cách vẽ entity:
 
 ## Widget
 Là các thành phần trong các màn hình như menu, settings, ... bao gồm các button, text, ... 
+
+
+Sample code: [Sample code](example.md)

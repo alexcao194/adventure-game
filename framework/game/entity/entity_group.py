@@ -15,9 +15,9 @@ class EntityGroup:
     def remove(self, entity: Entity):
         self.entities.remove(entity)
     
-    def render(self, display):
+    def __render__(self, display):
         for entity in self.entities:
-            entity.render(display)
-    def update(self, event):
+            entity.__render__(display)
+    def __update__(self, event):
         for entity in self.entities:
-            entity.update(event)
+            entity.__update__(event)

@@ -9,7 +9,6 @@ class StateMachine(Singleton):
     '''
     states = []        
     def push(state):
-        state.init()
         StateMachine.states.append(state)
     def pop():
         if(StateMachine.canPop()):
@@ -20,7 +19,7 @@ class StateMachine(Singleton):
     #         StateMachine.pop()
     def canPop():
         return StateMachine.states.__len__() > 1
-    def current_state():
+    def __current_state__():
         if len(StateMachine.states) == 0:
             return FallState()
         return StateMachine.states[-1]

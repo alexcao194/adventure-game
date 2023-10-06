@@ -22,6 +22,6 @@ class Text(Widget):
         self.font = pygame.font.Font(font, font_size)
         self.color = color
     
-    def render(self, display):
+    def __render__(self, display):
         text = self.font.render(self.text, True, self.color)
         display.blit(text, (self.position.x + self.size.x / 2 - text.get_width() / 2, self.position.y + self.size.y / 2 - text.get_height() / 2))

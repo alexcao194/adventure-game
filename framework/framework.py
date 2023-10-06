@@ -22,4 +22,5 @@ from framework.game.entity.entity import *
 from framework.game.entity.entity_group import *
 from framework.game.animations.animation import *
 from framework.game.animations.animation_manager import *
+from framework.game.entity.texture import *
 

@@ -24,9 +24,9 @@ class Animation:
         self.entity = entity
         self.delay = delay
         self.delay_count = 0
-        self.init()
+        self.__init_source__()
 
-    def init(self):
+    def __init_source__(self):
         for i in range(self.frame_count):
             image = pygame.image.load(self.src + str(i) + '.png')
             image = pygame.transform.scale(image, self.entity.hitbox.to_tuple())            
@@ -34,7 +34,7 @@ class Animation:
             image = pygame.transform.flip(image, True, False)
             self.images[1].append(image)
     
-    def next_frame(self):
+    def __next_frame__(self):
         if self.delay_count < self.delay:
             self.delay_count += 1
         else:
@@ -44,12 +44,12 @@ class Animation:
                 self.current_frame = 0
         return self.images[self.entity.fliped][self.current_frame]
 
-    def reset(self):
+    def __reset__(self):
         self.current_frame = 0
         self.delay_count = 0
     
-    def render(self, display):
-        display.blit(self.next_frame(), self.entity.position.to_tuple())
+    def __render__(self, display):
+        display.blit(self.__next_frame__(), self.entity.position.to_tuple())
 
 
 
@@ -60,18 +60,18 @@ class ActionAnimation(Animation):
     def __init__(self, src: str = None, frame_count: int = None, entity = None, delay: int = 0):
         super().__init__(src=src, frame_count=frame_count, entity=entity, delay=delay)
         
-    def reset(self):
+    def __reset__(self):
         self.isStart = True
-        super().reset()
+        super().__reset__()
 
-    def next_frame(self):
-        next_frame = super().next_frame()
+    def __next_frame__(self):
+        __next_frame__ = super().__next_frame__()
         if(self.current_frame == self.frame_count - 1):
             self.isStart = False
-        return next_frame
+        return __next_frame__
 
-    def render(self, display):
-        super().render(display)
+    def __render__(self, display):
+        super().__render__(display)
 
 
 

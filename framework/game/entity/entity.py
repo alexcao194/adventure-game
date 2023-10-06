@@ -22,30 +22,31 @@ class Entity:
         self.rect = pygame.Rect(position.to_tuple(), hitbox.to_tuple())
         self.isActive = True
         self.fliped = False
-        self.animation_manager = animation_manager
-        self.texture = texture
+        self.animation_manager = None
+        self.texture = None
     
-    def render(self, display):
-        if(animation_manager == None and texture == None):
+    
+    def __render__(self, display):
+        if(self.animation_manager == None and self.texture == None):
             raise Exception("Entity must have either animation_manager or texture")
-        if(animation_manager != None and texture != None):
+        if(self.animation_manager != None and self.texture != None):
             raise Exception("Entity cannot have both animation_manager and texture")
         if(self.isActive == False):
             return
         if(self.animation_manager != None):
-            self.animation_manager.render(display)
+            self.animation_manager.__render__(display)
         elif(self.texture != None):
-            self.texture.render(display)
+            self.texture.__render__(display)
         else:
             raise Exception("Entity must have either animation_manager or texture")
 
-    def update(self, event):
+    def __update__(self, event):
         if(self.isActive == False):
             return
         if(self.animation_manager != None):
-            self.animation_manager.update(event)
+            return
         elif(self.texture != None):
-            self.texture.update(event)
+            return
         else:
             raise Exception("Entity must have either animation_manager or texture")
             

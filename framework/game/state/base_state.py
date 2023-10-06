@@ -16,38 +16,30 @@ class BaseState:
             raise Exception("BaseState must have a background")
         self.background_asset = background
         self.background_image = None
+        self.__init_state__()
         self.widget_group = WidgetGroup()
         self.entity_group = EntityGroup()
 
 
 
-    def update(self, event):
+    def __update__(self, event):
         '''
         Update is called every frame.
         '''
-        self.widget_group.update(event)
-        self.entity_group.update(event)
+        self.widget_group.__update__(event)
+        self.entity_group.__update__(event)
 
     
-    def render(self, display):
+    def __render__(self, display):
         '''
         Render is called every frame. 
         '''
         if(self.background_asset != ''):
             display.blit(self.background_image, (0, 0))
-        self.widget_group.render(display)
-        self.entity_group.render(display)
+        self.widget_group.__render__(display)
+        self.entity_group.__render__(display)
     
-
-    
-    def destroy(self):
-        '''
-        Destroy is called when the state is destroyed.
-        '''
-        log(self, "Destroyed")
-
-    
-    def init(self):
+    def __init_state__(self):
         '''
         Init is called when the state is created.
         '''
@@ -59,7 +51,6 @@ class BaseState:
             self.background_image = pygame.transform.scale(self.background_image, (MediaQuery.size.x, (MediaQuery.size.x / width) * height))
         if(height < MediaQuery.size.y):
             self.background_image = pygame.transform.scale(self.background_image, ((MediaQuery.size.y / height) * width, MediaQuery.size.y))
-        log(self, "Initialized")
     
 class FallState(BaseState):
     def __init__(self, background=''):

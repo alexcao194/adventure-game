@@ -14,9 +14,9 @@ class WidgetGroup:
     def remove(self, widget: Widget):
         self.widgets.remove(widget)
     
-    def render(self, display):
+    def __render__(self, display):
         for widget in self.widgets:
-            widget.render(display)
-    def update(self, event):
+            widget.__render__(display)
+    def __update__(self, event):
         for widget in self.widgets:
-            widget.update(event) 
+            widget.__update__(event) 

@@ -20,8 +20,8 @@ class Widget:
         self.size = size
         self.rect = pygame.Rect(position.to_tuple(), size.to_tuple())
     
-    def render(self, display):
+    def __render__(self, display):
         pass
 
-    def update(self, event):
+    def __update__(self, event):
         pass
