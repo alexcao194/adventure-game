@@ -2,6 +2,8 @@ import pygame
 from framework.utils.vector2 import Vector2
 from framework.game.state.base_state import BaseState
 from framework.game.state.state_machine import StateMachine
+from framework.utils.media_query import MediaQuery
+from framework.core.localization import Localization
 
 class Application:
     """
@@ -12,12 +14,16 @@ class Application:
     display = None
     clock = None
     isActive = False
-    def __init__(self, vector2: Vector2, init_state: BaseState) -> None:
-        self.display = pygame.display.set_mode(vector2.to_tuple())
+    def __init__(self) -> None:
+        self.display = pygame.display.set_mode(MediaQuery.size.to_tuple())
         self.clock = pygame.time.Clock()
-        StateMachine.push(init_state)
         self.isActive = True
-    
+        self.__current_language__ = 'en'
+        pygame.init()
+        
+    def init_state(self, init_state: BaseState):
+        StateMachine.push(init_state)
+
     def run(self):
         """
         This method is responsible for running the game loop.
@@ -30,6 +36,9 @@ class Application:
     This method is responsible for updating the game.
     '''
     def __update__(self, event):
+        if(self.__current_language__ != Localization.language):
+            self.__current_language__ = Localization.language
+            StateMachine.__rebuild_stack__()
         StateMachine.__current_state__().__update__(event)
 
     def __render__(self, display):

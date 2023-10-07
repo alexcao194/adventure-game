@@ -14,11 +14,8 @@ class BaseState:
             raise Exception("BaseState cannot be instantiated")
         if(background == None):
             raise Exception("BaseState must have a background")
-        self.background_asset = background
-        self.background_image = None
-        self.__init_state__()
-        self.widget_group = WidgetGroup()
-        self.entity_group = EntityGroup()
+        self.__background_asset__ = background
+        self.__background_image__ = None
 
 
 
@@ -34,8 +31,8 @@ class BaseState:
         '''
         Render is called every frame. 
         '''
-        if(self.background_asset != ''):
-            display.blit(self.background_image, (0, 0))
+        if(self.__background_asset__ != ''):
+            display.blit(self.__background_image__, (0, 0))
         self.widget_group.__render__(display)
         self.entity_group.__render__(display)
     
@@ -43,15 +40,39 @@ class BaseState:
         '''
         Init is called when the state is created.
         '''
-        self.background_image = pygame.image.load(self.background_asset)
-        width = self.background_image.get_width()
-        height = self.background_image.get_height()
+        self.__background_image__ = pygame.image.load(self.__background_asset__)
+        width = self.__background_image__.get_width()
+        height = self.__background_image__.get_height()
         # transform with original aspect ratio
         if(width < MediaQuery.size.x):
-            self.background_image = pygame.transform.scale(self.background_image, (MediaQuery.size.x, (MediaQuery.size.x / width) * height))
+            self.__background_image__ = pygame.transform.scale(self.__background_image__, (MediaQuery.size.x, (MediaQuery.size.x / width) * height))
         if(height < MediaQuery.size.y):
-            self.background_image = pygame.transform.scale(self.background_image, ((MediaQuery.size.y / height) * width, MediaQuery.size.y))
+            self.__background_image__ = pygame.transform.scale(self.__background_image__, ((MediaQuery.size.y / height) * width, MediaQuery.size.y))
+        self.widget_group = WidgetGroup()
+        self.entity_group = EntityGroup()
+        
+    def __on_pause__(self):
+        '''
+        OnPause is called when the state is paused.
+        '''
+        pass
+
+    def __on_resume__(self):
+        '''
+        OnResume is called when the state is resumed.
+        '''
+        pass
+
+    def __on_exit__(self):
+        '''
+        OnExit is called when the state is exited.
+        '''
+        pass
     
 class FallState(BaseState):
     def __init__(self, background=''):
         super().__init__(background)
+    
+    def __render__(self, display):
+        display.fill((255, 0, 0))
+        
