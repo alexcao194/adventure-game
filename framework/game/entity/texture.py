@@ -1,4 +1,5 @@
 from framework.game.entity.entity import Entity
+from framework.utils.vector2 import Vector2
 import pygame
 
 class Texture:
@@ -16,7 +17,7 @@ class Texture:
     
     def __init_image__(self):
         self.image = pygame.image.load(self.texture)
-        self.image = pygame.transform.scale(self.image, self.entity.hitbox.to_tuple())
+        self.image = pygame.transform.scale(self.image, self.entity.size.to_tuple())
         
     def __render__(self, display):
         display.blit(self.image, self.entity.position.to_tuple())
