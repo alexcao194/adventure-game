@@ -7,22 +7,28 @@ class StateMachine(Singleton):
     states: list - the list of states
     navigate between states
     '''
-    states = []        
+    __states__ = []        
     def push(state):
-        StateMachine.states.append(state)
+        StateMachine.__current_state__().__on_pause__()
+        state.__init_state__()
+        StateMachine.__states__.append(state)
     def pop():
         if(StateMachine.canPop()):
-            StateMachine.current_state.destroy()
-            StateMachine.states.pop()
+            StateMachine.__current_state__().__on_exit__()
+            StateMachine.__states__.pop()
+            StateMachine.__current_state__().__on_resume__()
     # def popUntil(name):
-    #     while(StateMachine.current_state.name != name and StateMachine.canPop()):
+    #     while(StateMachine.__current_state__().name != name and StateMachine.canPop()):
     #         StateMachine.pop()
     def canPop():
-        return StateMachine.states.__len__() > 1
+        return StateMachine.__states__.__len__() > 1
     def __current_state__():
-        if len(StateMachine.states) == 0:
+        if len(StateMachine.__states__) == 0:
             return FallState()
-        return StateMachine.states[-1]
+        return StateMachine.__states__[-1]
+    def __rebuild_stack__():
+        for state in StateMachine.__states__:
+            state.__init_state__()
 
 
     

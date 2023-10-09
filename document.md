@@ -37,10 +37,25 @@ Có 2 cách vẽ entity:
 	```
 	Trong đó tham số thứ 3 phải là tên một RepeatAnimation đại diện cho trạng thái khởi tạo của nhân vật.
 
-- Sử dụng hệ thống Texture (Đang hoàn thiện)
+- Sử dụng hệ thống Texture:
+	```python
+	self.texture = Texture(texture=texture, entity=self)
+	```
 
 ## Widget
 Là các thành phần trong các màn hình như menu, settings, ... bao gồm các button, text, ... 
+
+## Localization
+Là hệ thống dịch ngôn ngữ, được sử dụng để dịch các text trong game sang các ngôn ngữ khác nhau.
+- Các ngôn ngữ được định nghĩa trong folder **strings** với đuôi là **.json**.
+- Các text được định nghĩa trong các file json tương ứng, với key là tên của text, value là nội dung của text.
+- Sau khi thêm hoặc sửa các file json, chạy file **__gen__.py** để sinh ra các file python tương ứng.
+- Sử dụng:
+	'''python
+	from framework.framework import Localization as S
+	text = S().key # get text with key
+	S.language = 'vi' # change locale
+	'''
 
 
 Sample code: [Sample code](example.md)
