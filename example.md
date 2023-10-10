@@ -6,63 +6,51 @@ from framework.framework import *
 from src.configs.assets import Assets
 
 class Player(Entity):
-    def __init__(self, position: Vector2 = None, hitbox: Vector2 = None):
-        super().__init__(hitbox=hitbox, position=position)
+    def __init__(self, position: Vector2 = None):
+        super().__init__(hitbox=Vector2(42, 42), position=position, offset=Vector2(0, 54), size=Vector2(42, 96))
         self.speed = 3
-
+        self.show_hitbox = True
         self.animation_manager = AnimationManager(
             action_animation = {
-                'death': ActionAnimation(
-                    src=Assets.ani_death,
-                    frame_count=10,
-                    entity=self,
-                    delay=2
-                )
+                
             },
             repeat_animation = {
-                'death': RepeatAnimation(
-                    src=Assets.ani_death,
-                    frame_count=10,
-                    entity=self,
-                    delay=2
+                'front': RepeatAnimation(
+                    src=Assets.ani_player_front,
+                    frame_count=1,
+                    entity=self
                 ),
-                'idle': RepeatAnimation(
-                    src=Assets.ani_idle,
-                    frame_count=6,
-                    entity=self,
-                    delay=2
+                'back': RepeatAnimation(
+                    src=Assets.ani_player_back,
+                    frame_count=1,
+                    entity=self
                 ),
+                'side': RepeatAnimation(
+                    src=Assets.ani_player_side,
+                    frame_count=1,
+                    entity=self
+                )
             },
-            current_animation="idle"
+            current_animation="front"
         )
 
     def __update__(self, event):
         super().__update__(event)
         keys = pygame.key.get_pressed()
         if(keys[pygame.K_LEFT]):
-            self.position.x -= self.speed
+            self.set_position(self.position + Vector2(-self.speed, 0))
             self.fliped = True
-            self.animation_manager.current_animation = "idle"
+            self.animation_manager.change_animation("side")
         elif(keys[pygame.K_RIGHT]):
-            self.position.x += self.speed
+            self.set_position(self.position + Vector2(self.speed, 0))
             self.fliped = False
-            self.animation_manager.current_animation  = "idle"
+            self.animation_manager.change_animation("side")
         elif(keys[pygame.K_UP]):
-            self.position.y -= self.speed
-            self.animation_manager.current_animation = "idle"
+            self.set_position(self.position + Vector2(0, -self.speed))
+            self.animation_manager.change_animation("back")
         elif(keys[pygame.K_DOWN]):
-            self.position.y += self.speed
-            self.animation_manager.current_animation = "idle"
-        else:
-            self.animation_manager.current_animation = "idle"
-
-        if(keys[pygame.K_SPACE]):
-            self.animation_manager.change_animation("death")
-        else:
-            self.animation_manager.change_animation("idle")
-
-        if(keys[pygame.K_v]):
-            self.animation_manager.play_action("death")
+            self.set_position(self.position + Vector2(0, self.speed))
+            self.animation_manager.change_animation("front")
 ```
 
 **block.py** (this is a simple block that can be used as a background)
@@ -138,16 +126,8 @@ class Menu(BaseState):
             scale=Vector2(1, 0.5)
         )
 
-        self.player = Player(
-            position=Vector2(400, 400),
-            hitbox=Vector2(256, 256)
-        )
-
-        self.block = Block(
-            position=Vector2(500, 500),
-            hitbox=Vector2(100, 100),
-            texture=Assets.tt_demo
-        )
+        self.player = Player(position=Vector2(100, 100))
+        self.block = Block(position=Vector2(200, 200))
 
         self.widget_group.add(self.button)
         self.widget_group.add(self.image_button)
@@ -168,7 +148,3 @@ class Menu(BaseState):
     def pop(self):
         StateMachine.pop()
 ```
-
-And that's it! You can run the game by running `python main.py` in the root directory. 
-We will see this **shit**:
-![DemoScreen](https://cdn.discordapp.com/attachments/960780341952544798/1159540448403148890/image.png?ex=65316532&is=651ef032&hm=a61c72505360f37d07ec4695459a537165ed0a81ae7e02c4d8e588cf44234750&)

@@ -29,7 +29,7 @@ class Animation:
     def __init_source__(self):
         for i in range(self.frame_count):
             image = pygame.image.load(self.src + str(i) + '.png')
-            image = pygame.transform.scale(image, self.entity.hitbox.to_tuple())            
+            image = pygame.transform.scale(image, self.entity.size.to_tuple())            
             self.images[0].append(image)
             image = pygame.transform.flip(image, True, False)
             self.images[1].append(image)

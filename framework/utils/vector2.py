@@ -20,6 +20,8 @@ class Vector2():
         return Vector2(self.x + other.x, self.y + other.y)
 
     def __mul__(self, other):
+        if isinstance(other, (int, float)):
+            return Vector2(self.x * other, self.y * other)
         return Vector2(self.x * other.x, self.y * other.y)
 
     def __str__(self):
