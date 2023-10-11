@@ -45,12 +45,12 @@ print("Generated localization.py successfully!!!")
 
 def create_ani_assets(name, path, script):
     script.write(f'''
-    ani_{name} = '{path}/'
+    ani_{name} = '{path.as_posix()}/'
     ''')
     
 def create_texture_assets(name, path, script):
     script.write(f'''
-    tt_{name} = '{path}'
+    tt_{name} = '{path.as_posix()}'
     ''')
     
 def genAniPath(path: Path, script):
