@@ -44,14 +44,12 @@ print("Generated localization.py successfully!!!")
 # Gen assests
 
 def create_ani_assets(name, path, script):
-    script.write(f'''
-    ani_{name} = '{path.as_posix()}/'
-    ''')
+    script.write(f'''   ani_{name.lower()} = '{path.as_posix()}/'
+''')
     
 def create_texture_assets(name, path, script):
-    script.write(f'''
-    tt_{name} = '{path.as_posix()}'
-    ''')
+    script.write(f'''   tt_{name.lower()} = '{path.as_posix()}'
+''')
     
 def genAniPath(path: Path, script):
     isEnd = True
