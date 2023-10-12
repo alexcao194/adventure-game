@@ -9,8 +9,10 @@ class Assets(Singleton):
     ani_attack_opposite = 'assets/animations/hero/attack/attack_opposite/'
     
     ani_attack_right = 'assets/animations/hero/attack/attack_right/'
+
+    ani_death = 'assets/animations/hero/death/'
     
-    ani_dead = 'assets/animations/hero/dead/'
+    ani_die = 'assets/animations/hero/die/'
     
     ani_run_behind = 'assets/animations/hero/run/run_behind/'
     
@@ -22,6 +24,8 @@ class Assets(Singleton):
     
     ani_walk_behind = 'assets/animations/hero/walk/walk_behind/'
     
+    ani_walk_left = 'assets/animations/hero/walk/walk_left/'
+    
     ani_walk_opposite = 'assets/animations/hero/walk/walk_opposite/'
     
     ani_walk_right = 'assets/animations/hero/walk/walk_right/'
@@ -30,7 +34,7 @@ class Assets(Singleton):
     tt_background = 'assets/textures/background/background.jpg'
     
     tt_demo = 'assets/textures/demo.jpg'
-    
+
     tt_0 = 'assets/textures/Map/map/TX_Plants/0.png'
     
     tt_1 = 'assets/textures/Map/map/TX_Plants/1.png'
@@ -484,4 +488,3 @@ class Assets(Singleton):
     tt_Tree2 = 'assets/textures/Map/Tree/Trees_texture_shadow_dark/Tree2.png'
     
     tt_Tree3 = 'assets/textures/Map/Tree/Trees_texture_shadow_dark/Tree3.png'
-    

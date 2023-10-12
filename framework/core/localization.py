@@ -3,5 +3,5 @@ class Localization(Singleton):
     language = 'en'
     languages = set()
     strings = dict()
-    languages = {'vi', 'en'}
+    languages = {'en', 'vi'}
     strings = {'en': {}, 'vi': {}}
