@@ -3,8 +3,8 @@ class Localization(Singleton):
     language = 'en'
     languages = set()
     strings = dict()
-    languages = {'en', 'vi'}
-    strings = {'en': {'all_settings': 'Settings', 'all_back': 'Back', 'setting_audio_toggle': 'Audio Effects', 'setting_music_toggle': 'Music', 'setting_language': 'Language', 'setting_language_en': 'English', 'setting_language_vi': 'Vietnamese'}, 'vi': {'all_settings': 'Cài đặt', 'all_back': 'Quay lại', 'setting_audio_toggle': 'Hiệu ứng âm thanh', 'setting_music_toggle': 'Âm nhạc', 'setting_language': 'Ngôn ngữ', 'setting_language_en': 'Tiếng Anh', 'setting_language_vi': 'Tiếng Việt'}}
+    languages = {'vi', 'en'}
+    strings = {'en': {'all_settings': 'Settings', 'all_back': 'Back', 'setting_audio_toggle': 'Audio Effects', 'setting_music_toggle': 'Music', 'setting_language': 'Language', 'setting_language_en': 'English', 'setting_language_vi': 'Vietnamese', 'continue_button': 'Continue', 'restart_button': 'Restart', 'menu_button': 'Menu', 'setting_button': 'Setting'}, 'vi': {'all_settings': 'Cài đặt', 'all_back': 'Quay lại', 'setting_audio_toggle': 'Hiệu ứng âm thanh', 'setting_music_toggle': 'Âm nhạc', 'setting_language': 'Ngôn ngữ', 'setting_language_en': 'Tiếng Anh', 'setting_language_vi': 'Tiếng Việt', 'continue_button': 'Tiếp tục', 'restart_button': 'Làm mới', 'menu_button': 'Menu', 'setting_button': 'Cài đặt'}}
 
     @property
     def all_settings(self):
@@ -33,4 +33,20 @@ class Localization(Singleton):
     @property
     def setting_language_vi(self):
         return Localization.strings[Localization.language]['setting_language_vi']
+    
+    @property
+    def continue_button(self):
+        return Localization.strings[Localization.language]['continue_button']
+    
+    @property
+    def restart_button(self):
+        return Localization.strings[Localization.language]['restart_button']
+    
+    @property
+    def menu_button(self):
+        return Localization.strings[Localization.language]['menu_button']
+    
+    @property
+    def setting_button(self):
+        return Localization.strings[Localization.language]['setting_button']
     
