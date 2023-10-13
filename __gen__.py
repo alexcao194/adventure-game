@@ -58,8 +58,7 @@ def genAniPath(path: Path, script):
             isEnd = False
             genAniPath(file, script)   
     if isEnd:
-        name = path.name.split('/')[-1]
-        create_ani_assets(name, path, script)
+        create_ani_assets(path.name, path, script)
        
 def genTexturePath(path: Path, script):
     for file in path.glob('*'):
@@ -79,12 +78,11 @@ class Assets(Singleton):
 ''')    
         
 if folder.exists() and folder.is_dir():
-    script.write('    # Animations')
+    script.write('    # Animations\n')
     ani_folder = list(folder.glob('animations'))
     genAniPath(ani_folder[0], script)
     
-    script.write('''
-    # Textures''')
+    script.write('\n# Textures\n')
     textures_folder = list(folder.glob('textures'))
     genTexturePath(textures_folder[0], script)
     
