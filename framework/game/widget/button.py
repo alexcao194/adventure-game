@@ -68,3 +68,32 @@ class ImageButton(Button):
         display.blit(self.image, self.position.to_tuple())
         super().__render__(display)
         
+class ImageButtonWithIcon(Button):
+    '''
+    ImageButtonWithIcon is a image button that has an image as leading icon.
+    background: str - the path to the background image
+    icon: str - the path to the icon image
+    '''
+    def __init__(self, background: str = None, icon: str = None, callback: callable = None, size:Vector2 = None, position: Vector2 = None, scale = 1, text = "", font = MediaQuery.font_family, font_size: int = MediaQuery.font_size):
+        if(background == None):
+            raise Exception("ImageButtonWithIcon must have a background")
+        if(icon == None):
+            raise Exception("ImageButtonWithIcon must have an icon")
+        self.image = pygame.image.load(background)
+        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
+        
+        if(size == None):
+            self.size = Vector2(self.image.get_width(), self.image.get_height())
+        else:
+            self.size = size
+            
+        self.ic = pygame.image.load(icon)
+        self.ic = pygame.transform.scale(self.ic, (int(self.ic.get_width() * scale), int(self.ic.get_height() * scale)))
+        
+        super().__init__(text=text, callback=callback, position=position, size=self.size, font=font, font_size=font_size)
+    
+    def __render__(self, display):
+        display.blit(self.image, self.position.to_tuple())
+        display.blit(self.ic, (self.position.x + 10, self.position.y + self.size.y // 2 - self.ic.get_height() // 2))
+        text = self.font.render(self.text, True, (255, 255, 255))
+        display.blit(text, (self.position.x + 20 + self.ic.get_height(), self.position.y + self.size.y // 2 - text.get_height() // 2))
