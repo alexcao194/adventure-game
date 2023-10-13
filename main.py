@@ -1,7 +1,7 @@
 from framework.framework import *
-from src.state.pause_menu import MenuPause
+from src.states.menu import Menu
 
 
 app = Application()
-app.init_state( MenuPause())
+app.init_state(Menu())
 app.run()
