@@ -1,5 +1,6 @@
 from framework.framework import *
 from src.configs.assets import Assets
+import pygame
 
 class Player(Entity):
     def __init__(self, position: Vector2):
@@ -32,7 +33,6 @@ class Player(Entity):
     
     def __update__(self, event):
         super().__update__(event=event)
-        
         keys = pygame.key.get_pressed()
         if(keys[pygame.K_w]):
             self.set_position(self.position + Vector2(0, -self.speed))
