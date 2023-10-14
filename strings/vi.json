@@ -5,5 +5,10 @@
     "setting_music_toggle": "Âm nhạc",
     "setting_language": "Ngôn ngữ",
     "setting_language_en": "Tiếng Anh",
-    "setting_language_vi": "Tiếng Việt"
+    "setting_language_vi": "Tiếng Việt",
+
+    "continue_button": "Tiếp tục",
+    "restart_button": "Làm mới",
+    "menu_button": "Menu",
+    "setting_button": "Cài đặt"
 }

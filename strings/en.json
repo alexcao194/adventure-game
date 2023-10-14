@@ -5,5 +5,10 @@
     "setting_music_toggle": "Music",
     "setting_language": "Language",
     "setting_language_en": "English",
-    "setting_language_vi": "Vietnamese"
+    "setting_language_vi": "Vietnamese",
+
+    "continue_button": "Continue",
+    "restart_button": "Restart",
+    "menu_button": "Menu",
+    "setting_button": "Setting"
 }
