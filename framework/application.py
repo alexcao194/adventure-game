@@ -1,5 +1,6 @@
 import pygame
 from framework.utils.vector2 import Vector2
+from framework.utils.clock import Clock
 from framework.game.state.base_state import BaseState
 from framework.game.state.state_machine import StateMachine
 from framework.utils.media_query import MediaQuery
@@ -29,13 +30,13 @@ class Application:
         This method is responsible for running the game loop.
         """
         while self.isActive:
-            self.clock.tick(60)
             self.handle_events()
             self.__render__(self.display)
     '''
     This method is responsible for updating the game.
     '''
     def __update__(self, event):
+        Clock.__update__(event)
         if(self.__current_language__ != Localization.language):
             self.__current_language__ = Localization.language
             StateMachine.__rebuild_stack__()
