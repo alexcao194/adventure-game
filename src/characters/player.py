@@ -2,7 +2,7 @@ from framework.framework import *
 from src.configs.assets import Assets
 class Player(Entity):
     def __init__(self, position: Vector2):
-        super().__init__(hitbox=Vector2(20, 40), position=position, size=Vector2(85, 64), offset=Vector2(33, 10))
+        super().__init__(hitbox=Vector2(20, 20), position=position, size=Vector2(85, 64), offset=Vector2(33, 30))
         self.orientation = 'opposite'
         self.show_hitbox = True
         self.speed = 200

@@ -30,6 +30,7 @@ class Entity:
         self.texture = None
         self.offset = offset
         self.show_hitbox = False
+        self.collisions = []
         self.rect = pygame.Rect((position + offset).to_tuple(), hitbox.to_tuple())
     
     
@@ -61,14 +62,26 @@ class Entity:
             raise Exception("Entity must have either animation_manager or texture")
         
     def __on_collision__(self, others):
-        pass        
+        self.collisions = others
 
     def set_position(self, position: Vector2):
+        horizontal_movement = position.x - self.position.x
+        vertical_movement = position.y - self.position.y
+        for other in self.collisions:
+            if(horizontal_movement > 0 and self.rect.left <= other.rect.left):
+                position.x = other.position.x - self.hitbox.x - self.offset.x
+            elif(horizontal_movement < 0 and self.rect.right >= other.rect.right):
+                position.x = other.position.x + other.hitbox.x - self.offset.x
+            if(vertical_movement > 0 and self.rect.top <= other.rect.top):
+                position.y = other.rect.top - self.hitbox.y - self.offset.y
+            elif(vertical_movement < 0 and self.rect.bottom >= other.rect.bottom):
+                position.y = other.rect.bottom - self.offset.y
+
+
         self.position = position
         self.rect = pygame.Rect((self.position + self.offset).to_tuple(), self.hitbox.to_tuple())
 
-        # self.position = position
-        # self.rect = pygame.Rect((self.position + self.offset).to_tuple(), self.hitbox.to_tuple())
+       
 
     def is_colliding(self, other):
         return self.rect.colliderect(other.rect)
