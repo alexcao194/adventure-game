@@ -2,6 +2,7 @@ from framework.framework import *
 from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.states.setting import Setting
+from src.states.play import Play
 
 class Home(BaseState):
     def __init__(self):
@@ -56,11 +57,11 @@ class Home(BaseState):
 
     
     def start_game(self):
-        # StateMachine().push(Play())     
+        StateMachine.push(Play())     
         pass
 
     def continue_game(self):
-        # StateMachine().push(Play())
+        StateMachine.push(Play())
         pass
     
     def open_setting(self):
