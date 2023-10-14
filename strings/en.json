@@ -10,5 +10,7 @@
     "continue_button": "Continue",
     "restart_button": "Restart",
     "menu_button": "Menu",
-    "setting_button": "Setting"
+    "setting_button": "Setting",
+    "start_button": "Start",
+    "about_button": "About"
 }
