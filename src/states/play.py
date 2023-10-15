@@ -11,7 +11,6 @@ class Play(BaseState):
 
     def __init_state__(self):
         super().__init_state__()
-
         self.player = Player(position=Vector2(160, 421))
         self.block1 = Block1(position=Vector2(215,543))
         self.block2 = Block2(position=Vector2(0,543))
@@ -38,4 +37,17 @@ class Play(BaseState):
         self.entity_group.add(self.monster_3)
         self.entity_group.add(self.monster_4)
         self.entity_group.add(self.player)
-    
+        self.entity_group.add(self.block1)
+        self.entity_group.add(self.block2)
+        self.entity_group.add(self.block)
+        self.entity_group.add(self.block3)
+        self.entity_group.add(self.block4)
+        self.entity_group.add(self.block5)
+        self.entity_group.add(self.block6)
+        self.entity_group.add(self.block7)
+        self.entity_group.add(self.block8)
+        # self.entity_group.add(self.block9)  
+        self.entity_group.add(self.block10) 
+        self.entity_group.add(self.block11)
+        self.entity_group.add(self.block12)
+        self.entity_group.add(self.block13)

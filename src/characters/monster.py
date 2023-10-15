@@ -4,7 +4,7 @@ from src.configs.assets import Assets
 class Monster(Entity):
     def __init__(self, position: Vector2, follower: Entity):
         super().__init__(hitbox=Vector2(32, 32), position=position, size=Vector2(96, 66), offset=Vector2(32, 22))
-        self.show_hitbox = False
+        self.show_hitbox = False    
         self.follower = follower
         self.init_position = position
         self.following = False
