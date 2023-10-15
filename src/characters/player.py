@@ -32,19 +32,19 @@ class Player(Entity):
     def __update__(self, event):
         super().__update__(event=event)
         keys = pygame.key.get_pressed()
-        if(keys[pygame.K_w]):
+        if(keys[pygame.K_UP]):
             self.set_position(self.position + Vector2(0, -self.speed * Clock.delta_time))
             self.orientation = 'behind'
             self.animation_manager.change_animation('run_behind')
-        elif(keys[pygame.K_s]):
+        elif(keys[pygame.K_DOWN]):
             self.set_position(self.position + Vector2(0, self.speed * Clock.delta_time))
             self.orientation = 'opposite'
             self.animation_manager.change_animation('run_opposite')
-        elif(keys[pygame.K_a]):
+        elif(keys[pygame.K_LEFT]):
             self.set_position(self.position + Vector2(-self.speed * Clock.delta_time, 0))
             self.orientation = 'left'
             self.animation_manager.change_animation('run_left')
-        elif(keys[pygame.K_d]):
+        elif(keys[pygame.K_RIGHT]):
             self.set_position(self.position + Vector2(self.speed * Clock.delta_time, 0))
             self.orientation = 'right'
             self.animation_manager.change_animation('run_right')
