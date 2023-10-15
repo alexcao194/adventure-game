@@ -2,20 +2,8 @@ from framework.framework import *
 from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.characters.player import Player
-from src.map.block import Block
-from src.map.block import Block1
-from src.map.block import Block2
-from src.map.block import Block3
-from src.map.block import Block4
-from src.map.block import Block5
-from src.map.block import Block6
-from src.map.block import Block7
-from src.map.block import Block8
-# from src.map.block import Block9
-from src.map.block import Block10
-from src.map.block import Block11
-from src.map.block import Block12
-from src.map.block import Block13
+from src.characters.monster import Monster
+from src.map.block import *
 
 class Play(BaseState):
     def __init__(self):
@@ -38,9 +26,16 @@ class Play(BaseState):
         self.block11 = Block11(position=Vector2(920,240))
         self.block12 = Block12(position=Vector2(1173,440))
         self.block13 = Block13(position=Vector2(100,195))
+        self.monster_1 = Monster(position=Vector2(200, 300), follower=self.player)
+        self.monster_2 = Monster(position=Vector2(500, 300), follower=self.player)
+        self.monster_3 = Monster(position=Vector2(800, 300), follower=self.player)
+        self.monster_4 = Monster(position=Vector2(1100, 300), follower=self.player)
 
 
-
+        self.entity_group.add(self.monster_1)
+        self.entity_group.add(self.monster_2)
+        self.entity_group.add(self.monster_3)
+        self.entity_group.add(self.monster_4)
         self.entity_group.add(self.player)
         self.entity_group.add(self.block1)
         self.entity_group.add(self.block2)
