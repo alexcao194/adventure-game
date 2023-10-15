@@ -31,6 +31,7 @@ class Entity:
         self.offset = offset
         self.show_hitbox = False
         self.collisions = []
+        self.is_solid = True
         self.rect = pygame.Rect((position + offset).to_tuple(), hitbox.to_tuple())
     
     
@@ -68,14 +69,19 @@ class Entity:
         horizontal_movement = position.x - self.position.x
         vertical_movement = position.y - self.position.y
         for other in self.collisions:
-            if(horizontal_movement > 0 and self.rect.left <= other.rect.left):
-                position.x = other.position.x - self.hitbox.x - self.offset.x
-            elif(horizontal_movement < 0 and self.rect.right >= other.rect.right):
-                position.x = other.position.x + other.hitbox.x - self.offset.x
+            if(other.is_solid == False):
+                continue
+
             if(vertical_movement > 0 and self.rect.top <= other.rect.top):
                 position.y = other.rect.top - self.hitbox.y - self.offset.y
             elif(vertical_movement < 0 and self.rect.bottom >= other.rect.bottom):
                 position.y = other.rect.bottom - self.offset.y
+
+            if(horizontal_movement > 0 and self.rect.left <= other.rect.left):
+                position.x = other.rect.left - self.hitbox.x - self.offset.x
+            elif(horizontal_movement < 0 and self.rect.right >= other.rect.right):
+                position.x = other.rect.right - self.offset.x
+            
 
 
         self.position = position
