@@ -1,5 +1,6 @@
 from framework.framework import *
 from src.configs.assets import Assets
+import random
 class Player(Entity):
     def __init__(self, position: Vector2):
         super().__init__(hitbox=Vector2(20, 20), position=position, size=Vector2(85, 64), offset=Vector2(33, 30))
@@ -7,6 +8,9 @@ class Player(Entity):
         self.show_hitbox = True
         self.speed = 200
         self.alive = True
+        self.hp = 1000
+        self.damage = 100
+        self.is_solid = False
         self.animation_manager = AnimationManager(
             action_animation = {
                 "die": ActionAnimation(entity=self, src=Assets.ani_die, delay=75, frame_count=3),
@@ -55,6 +59,8 @@ class Player(Entity):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 self.animation_manager.play_action('attack_' + self.orientation)
+                for collision in self.collisions:  
+                    collision.hp -= random.randint(self.damage - 20, self.damage + 20)
             if event.key == pygame.K_p:
                 self.alive = False
                 self.animation_manager.play_action('die')
