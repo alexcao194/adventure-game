@@ -16,6 +16,14 @@ class Assets(Singleton):
    ani_walk_left = 'assets/animations/hero/walk/walk_left/'
    ani_walk_opposite = 'assets/animations/hero/walk/walk_opposite/'
    ani_walk_right = 'assets/animations/hero/walk/walk_right/'
+   ani_monsterattack_dam = 'assets/animations/monster/attack/monsterattack_dam/'
+   ani_monster_attack_arround = 'assets/animations/monster/attack/monster_attack_arround/'
+   ani_monster_attack_skewer = 'assets/animations/monster/attack/monster_attack_skewer/'
+   ani_monster_dead = 'assets/animations/monster/monster_dead/'
+   ani_monster_die = 'assets/animations/monster/monster_die/'
+   ani_monster_idle = 'assets/animations/monster/monster_idle/'
+   ani_monster_run = 'assets/animations/monster/monster_run/'
+   ani_monster_stand = 'assets/animations/monster/monster_stand/'
 
 # Textures
    tt_background = 'assets/textures/background/background.jpg'
