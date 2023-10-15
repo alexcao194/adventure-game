@@ -6,6 +6,7 @@
 
 
 from framework.utils.vector2 import *
+from framework.utils.clock import *
 from framework.application import *
 from framework.game.state.base_state import *
 from framework.game.state.state_machine import *

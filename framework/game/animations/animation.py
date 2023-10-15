@@ -1,5 +1,5 @@
 import pygame
-
+from framework.utils.clock import Clock
 
 class Animation:
     '''
@@ -36,7 +36,7 @@ class Animation:
     
     def __next_frame__(self):
         if self.delay_count < self.delay:
-            self.delay_count += 1
+            self.delay_count += Clock.delta_time * 1000
         else:
             self.delay_count = 0
             self.current_frame += 1

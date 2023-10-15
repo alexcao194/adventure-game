@@ -1,7 +1,6 @@
 from framework.framework import *
-from src.states.menu import Menu
-
+from src.states.home import Home
 
 app = Application()
-app.init_state(Menu())
+app.init_state(Home())
 app.run()

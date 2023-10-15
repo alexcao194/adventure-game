@@ -1,7 +1,8 @@
 from framework.framework import *
 
 class Assets(Singleton):
-    # Animations   ani_attack_behind = 'assets/animations/hero/attack/attack_behind/'
+    # Animations
+   ani_attack_behind = 'assets/animations/hero/attack/attack_behind/'
    ani_attack_left = 'assets/animations/hero/attack/attack_left/'
    ani_attack_opposite = 'assets/animations/hero/attack/attack_opposite/'
    ani_attack_right = 'assets/animations/hero/attack/attack_right/'
@@ -16,7 +17,17 @@ class Assets(Singleton):
    ani_walk_opposite = 'assets/animations/hero/walk/walk_opposite/'
    ani_walk_right = 'assets/animations/hero/walk/walk_right/'
 
-    # Textures   tt_background = 'assets/textures/background/background.jpg'
+# Textures
+   tt_background = 'assets/textures/background/background.jpg'
+   tt_background_setting = 'assets/textures/background/background_setting.jpg'
+   tt_background_setting_button = 'assets/textures/background/background_setting_button.png'
+   tt_background_setting_toggle_audio_off = 'assets/textures/background/background_setting_toggle_audio_off.png'
+   tt_background_setting_toggle_audio_on = 'assets/textures/background/background_setting_toggle_audio_on.png'
+   tt_background_setting_toggle_music_off = 'assets/textures/background/background_setting_toggle_music_off.png'
+   tt_background_setting_toggle_music_on = 'assets/textures/background/background_setting_toggle_music_on.png'
+   tt_button_close = 'assets/textures/background/button_close.png'
+   tt_flag_uk = 'assets/textures/flag/flag_uk.png'
+   tt_flag_vi = 'assets/textures/flag/flag_vi.png'
    tt_plant_0 = 'assets/textures/map/plants/plant_0.png'
    tt_plant_1 = 'assets/textures/map/plants/plant_1.png'
    tt_plant_2 = 'assets/textures/map/plants/plant_2.png'
