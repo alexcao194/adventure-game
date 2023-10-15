@@ -6,8 +6,8 @@ class Player(Entity):
     def __init__(self, position: Vector2):
         super().__init__(hitbox=Vector2(20, 40), position=position, size=Vector2(85, 64), offset=Vector2(33, 10))
         self.orientation = 'opposite'
-        self.show_hitbox = True
-        self.speed = 3
+        self.show_hitbox = False
+        self.speed = 200
         self.alive = True
         self.animation_manager = AnimationManager(
             action_animation = {
