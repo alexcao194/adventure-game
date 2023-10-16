@@ -9,8 +9,10 @@ class Player(Entity):
         self.speed = 200
         self.alive = True
         self.hp = 1000
+        self.max_hp = 1000
         self.damage = 100
         self.is_solid = False
+        self.health_bar = HealthBar(size=Vector2(50, 7), entity=self, offset=Vector2(18, -5))
         self.animation_manager = AnimationManager(
             action_animation = {
                 "die": ActionAnimation(entity=self, src=Assets.ani_die, delay=75, frame_count=3),
@@ -60,7 +62,10 @@ class Player(Entity):
             if event.key == pygame.K_SPACE:
                 self.animation_manager.play_action('attack_' + self.orientation)
                 for collision in self.collisions:  
-                    collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                        try:
+                            collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                        except:
+                            pass
             if event.key == pygame.K_p:
                 self.alive = False
                 self.animation_manager.play_action('die')

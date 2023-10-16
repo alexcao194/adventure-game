@@ -39,7 +39,6 @@ class Assets(Singleton):
    tt_block_3 = 'assets/textures/block/block_3.png'
    tt_block_4 = 'assets/textures/block/block_4.png'
    tt_block_5 = 'assets/textures/block/block_5.png'
-   tt_block_6 = 'assets/textures/block/block_6.png'
    tt_flag_uk = 'assets/textures/flag/flag_uk.png'
    tt_flag_vi = 'assets/textures/flag/flag_vi.png'
    tt_plant_0 = 'assets/textures/map/plants/plant_0.png'
