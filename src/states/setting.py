@@ -100,14 +100,12 @@ class Setting(BaseState):
         
     def onToggleMusic(self, isOff: bool):
         if isOff:
-            AudioManager().turn_off_music()
+            AudioManager.turn_off_music()
         else: 
-            AudioManager().turn_on_music()
-        print(f"Music is off: {isOff}")
+            AudioManager.turn_on_music()
         
     def onToggleAudio(self, isOff: bool):
         if isOff:
-            AudioManager().turn_off_effects()
+            AudioManager.turn_off_effects()
         else:
-            AudioManager().turn_on_effects()
-        print(f"Audio is oof: {isOff}")
+            AudioManager.turn_on_effects()

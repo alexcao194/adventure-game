@@ -3,38 +3,36 @@ from framework.core.singleton import Singleton
 
 
 class AudioManager(Singleton):
-    def __init__(self):
-        pygame.mixer.init()
-        self.background_music = None
-        self.is_background_music_on = True
-        self.is_sound_effects_on = True
+    background_music = None
+    is_background_music_on = True
+    is_sound_effects_on = True
 
-    def play_background(self, src):
-        if self.is_background_music_on:
-            if self.background_music:
+    def play_background(src):
+        if AudioManager.is_background_music_on:
+            if AudioManager.background_music:
                 pygame.mixer.music.stop()
             pygame.mixer.music.load(src)
             pygame.mixer.music.play(-1)
-        self.background_music = src
+        AudioManager.background_music = src
         
-    def play_effect(self, src):
-        if self.is_sound_effects_on:
+    def play_effect(src):
+        if AudioManager.is_sound_effects_on:
             sound = pygame.mixer.Sound(src)
             sound.play()
 
-    def turn_on_music(self):
-        if self.background_music:
-            pygame.mixer.music.load(self.background_music)
+    def turn_on_music():
+        if AudioManager.background_music:
+            pygame.mixer.music.load(AudioManager.background_music)
             pygame.mixer.music.play(-1)
-        self.is_background_music_on = True
+        AudioManager.is_background_music_on = True
 
-    def turn_off_music(self):
-        if self.background_music:
+    def turn_off_music():
+        if AudioManager.background_music:
             pygame.mixer.stop()
-        self.is_background_music_on = False
+        AudioManager.is_background_music_on = False
 
-    def turn_on_effects(self):
-        self.is_sound_effects_on = True
+    def turn_on_effects():
+        AudioManager.is_sound_effects_on = True
 
-    def turn_off_effects(self):
-        self.is_sound_effects_on = False
+    def turn_off_effects():
+        AudioManager.is_sound_effects_on = False
