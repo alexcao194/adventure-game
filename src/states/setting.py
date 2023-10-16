@@ -18,14 +18,15 @@ class Setting(BaseState):
         )
         
         self.chooseLanguageTitle = Text(
-            position=Vector2(4*screenWidth//5, 200),
+            position=Vector2(900, 200),
             size=Vector2(30, 30),
             text= S().setting_language,
             font_size=50,
         )
         
         self.viOption = ImageButtonWithIcon(
-            position=Vector2(800, 250),
+            position=Vector2(700, 250),
+            size=Vector2(200, 60),
             background=Assets.tt_background_setting_button,
             icon=Assets.tt_flag_vi,
             text=S().setting_language_vi,
@@ -34,7 +35,8 @@ class Setting(BaseState):
         )
         
         self.enOption = ImageButtonWithIcon(
-            position=Vector2(1000, 250),
+            position=Vector2(950, 250),
+            size=Vector2(200, 60),
             background=Assets.tt_background_setting_button,
             icon=Assets.tt_flag_uk,
             text=S().setting_language_en,
@@ -66,7 +68,7 @@ class Setting(BaseState):
         )
         
         self.toggleMusicButton = CheckBox(
-            position=Vector2(screenWidth//5 + 80, screenHeight//4),
+            position=Vector2(screenWidth//5 + 120, screenHeight//4 - 10),
             size=Vector2(50, 50),
             selected_src=Assets.tt_background_setting_toggle_music_on,
             unselected_src=Assets.tt_background_setting_toggle_music_off,
@@ -74,7 +76,7 @@ class Setting(BaseState):
         )
         
         self.toggleAudioButton = CheckBox(
-            position=Vector2(screenWidth//5 + 120, screenHeight//4 + 100),
+            position=Vector2(screenWidth//5 + 220, screenHeight//4 + 85),
             size=Vector2(50, 50),
             selected_src=Assets.tt_background_setting_toggle_audio_on,
             unselected_src=Assets.tt_background_setting_toggle_audio_off,

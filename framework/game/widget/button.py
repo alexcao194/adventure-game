@@ -80,12 +80,14 @@ class ImageButtonWithIcon(Button):
         if(icon == None):
             raise Exception("ImageButtonWithIcon must have an icon")
         self.image = pygame.image.load(background)
-        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
+        
         
         if(size == None):
             self.size = Vector2(self.image.get_width(), self.image.get_height())
+            self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
         else:
             self.size = size
+            self.image = pygame.transform.scale(self.image, (int(self.size.x * scale), int(self.size.y * scale)))
             
         self.ic = pygame.image.load(icon)
         self.ic = pygame.transform.scale(self.ic, (int(self.ic.get_width() * scale), int(self.ic.get_height() * scale)))
