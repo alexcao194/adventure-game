@@ -9,6 +9,7 @@ class Player(Entity):
         self.speed = 200
         self.alive = True
         self.hp = 1000
+        self.max_hp = 1000
         self.damage = 100
         self.is_solid = False
         self.animation_manager = AnimationManager(

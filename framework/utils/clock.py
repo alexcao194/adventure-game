@@ -8,4 +8,3 @@ class Clock(Singleton):
     def __update__(event):
         Clock.delta_time = (pygame.time.get_ticks() - Clock.time) / 1000
         Clock.time = pygame.time.get_ticks()
-        print(Clock.delta_time)
