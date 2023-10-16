@@ -23,7 +23,6 @@ class Play(BaseState):
         self.block6 = Block(texture=Assets.tt_block_2,hitbox=Vector2(298,300), size=Vector2(0,1), offset=Vector2(0,25),position=Vector2(1016,703))
         self.block7 = Block(texture=Assets.tt_block_2,hitbox=Vector2(50,320), size=Vector2(0,1), offset=Vector2(0,25),position=Vector2(30,225))
         self.block8 = Block(texture=Assets.tt_block_2,hitbox=Vector2(400,12), size=Vector2(0,1), offset=Vector2(0,25),position=Vector2(60,225))
-        #self.block9 = Block(texture=Assets.tt_block_1,hitbox=Vector2(40,100), size=Vector2(53,43), offset=Vector2(0,30),position=(215,543))
         self.block10 = Block(texture=Assets.tt_block_2,hitbox=Vector2(150,250), size=Vector2(0,1), offset=Vector2(0,0),position=Vector2(1080,240))
         self.block11 = Block(texture=Assets.tt_block_2,hitbox=Vector2(170,10), size=Vector2(0,1), offset=Vector2(0,10),position=Vector2(920,240))
         self.block12 = Block(texture=Assets.tt_block_2,hitbox=Vector2(40,95), size=Vector2(0,1), offset=Vector2(0,10),position=Vector2(1173,440))
@@ -56,8 +55,10 @@ class Play(BaseState):
         self.wall9 = Block(texture=Assets.tt_block_2,hitbox=Vector2(330,15),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(545,7))
         
         
-        
-        
+        self.glass1 = Block(texture=Assets.tt_plant_4,hitbox=Vector2(1,1),size=Vector2(70,70),offset=Vector2(0,69),position=Vector2(470,80))
+        self.glass2 = Block(texture=Assets.tt_plant_3,hitbox=Vector2(1,1),size=Vector2(60,50),offset=Vector2(0,25),position=Vector2(575,2))
+        self.glass3 = Block(texture=Assets.tt_plant_6,hitbox=Vector2(1,1),size=Vector2(95,85),offset=Vector2(95,85),position=Vector2(825,160))
+        self.glass4 = Block(texture=Assets.tt_block_5,hitbox=Vector2(1,1), size=Vector2(60,75), offset=Vector2(60,55),position=Vector2(401,238))
         
         
         
@@ -81,7 +82,7 @@ class Play(BaseState):
         self.entity_group.add(self.block6)
         self.entity_group.add(self.block7)
         self.entity_group.add(self.block8)
-        # self.entity_group.add(self.block9)  
+        self.entity_group.add(self.glass4)  
         self.entity_group.add(self.block10) 
         self.entity_group.add(self.block11)
         self.entity_group.add(self.block12)
@@ -104,3 +105,7 @@ class Play(BaseState):
         self.entity_group.add(self.wall7)
         self.entity_group.add(self.wall8)
         self.entity_group.add(self.wall9)
+        self.entity_group.add(self.glass1)
+        self.entity_group.add(self.glass2)
+        self.entity_group.add(self.glass3)
+        self.entity_group.add(self.glass4)
