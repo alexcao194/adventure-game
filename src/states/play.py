@@ -13,6 +13,7 @@ class Play(BaseState):
 
     def __init_state__(self):
         super().__init_state__()
+        AudioManager.play_background(Assets.sd_play)
         self.player = Player(position=Vector2(160, 421))
         self.block1 = Block1(position=Vector2(215,543))
         self.block2 = Block2(position=Vector2(0,543))
@@ -64,4 +65,3 @@ class Play(BaseState):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 StateMachine.push(Pause())
-                

@@ -68,16 +68,16 @@ class Setting(BaseState):
         self.toggleMusicButton = CheckBox(
             position=Vector2(screenWidth//5 + 80, screenHeight//4),
             size=Vector2(50, 50),
-            selected_src=Assets.tt_background_setting_toggle_music_on,
-            unselected_src=Assets.tt_background_setting_toggle_music_off,
+            selected_src=Assets.tt_background_setting_toggle_music_off,
+            unselected_src=Assets.tt_background_setting_toggle_music_on,
             callback= self.onToggleMusic
         )
         
         self.toggleAudioButton = CheckBox(
             position=Vector2(screenWidth//5 + 120, screenHeight//4 + 100),
             size=Vector2(50, 50),
-            selected_src=Assets.tt_background_setting_toggle_audio_on,
-            unselected_src=Assets.tt_background_setting_toggle_audio_off,
+            selected_src=Assets.tt_background_setting_toggle_audio_off,
+            unselected_src=Assets.tt_background_setting_toggle_audio_on,
             callback= self.onToggleAudio
         )
         
@@ -98,8 +98,14 @@ class Setting(BaseState):
     def onClickBack(self):
         StateMachine.pop()
         
-    def onToggleMusic(self, selected: bool):
-        print(f"Music is {selected}")
+    def onToggleMusic(self, isOff: bool):
+        if isOff:
+            AudioManager.turn_off_music()
+        else: 
+            AudioManager.turn_on_music()
         
-    def onToggleAudio(self, selected: bool):
-        print(f"Audio is {selected}")
+    def onToggleAudio(self, isOff: bool):
+        if isOff:
+            AudioManager.turn_off_effects()
+        else:
+            AudioManager.turn_on_effects()

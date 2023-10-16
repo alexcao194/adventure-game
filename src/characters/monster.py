@@ -65,6 +65,7 @@ class Monster(Entity):
                 if(collision.__class__.__name__ == 'Player'):
                     if(self.animation_manager.current_action_animation == None):
                         self.animation_manager.play_action("attack")
+                        AudioManager.play_effect(Assets.sd_slash)
                         self.follower.hp -= random.randint(self.damage - 10, self.damage + 10)
                     break
 
