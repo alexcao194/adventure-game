@@ -60,7 +60,10 @@ class Player(Entity):
             if event.key == pygame.K_SPACE:
                 self.animation_manager.play_action('attack_' + self.orientation)
                 for collision in self.collisions:  
-                    collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                        try:
+                            collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                        except:
+                            pass
             if event.key == pygame.K_p:
                 self.alive = False
                 self.animation_manager.play_action('die')
