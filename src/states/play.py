@@ -47,10 +47,20 @@ class Play(BaseState):
 
         self.wall1 = Block(texture=Assets.tt_block_2,hitbox=Vector2(160,155),size=Vector2(160,155),offset=Vector2(0,0),position=Vector2(460,253))
         self.wall2 = Block(texture=Assets.tt_block_2,hitbox=Vector2(160,155),size=Vector2(160,155),offset=Vector2(0,0),position=Vector2(770,253))
-
-
         self.wall3 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(620,253))
         self.wall4 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(757,253))
+        self.wall5 = Block(texture=Assets.tt_block_2,hitbox=Vector2(15,230),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(460,30))
+        self.wall6 = Block(texture=Assets.tt_block_2,hitbox=Vector2(15,230),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(923,30))
+        self.wall7 = Block(texture=Assets.tt_block_2,hitbox=Vector2(90,90),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(460,10))
+        self.wall8 = Block(texture=Assets.tt_block_2,hitbox=Vector2(90,90),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(845,10))
+        self.wall9 = Block(texture=Assets.tt_block_2,hitbox=Vector2(330,15),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(545,7))
+        
+        
+        
+        
+        
+        
+        
         self.monster_1 = Monster(position=Vector2(100, 300), follower=self.player)
         self.monster_2 = Monster(position=Vector2(200, 300), follower=self.player)
         self.monster_3 = Monster(position=Vector2(300, 300), follower=self.player)
@@ -89,3 +99,8 @@ class Play(BaseState):
         self.entity_group.add(self.wall2)
         self.entity_group.add(self.wall3)
         self.entity_group.add(self.wall4)
+        self.entity_group.add(self.wall5)
+        self.entity_group.add(self.wall6)
+        self.entity_group.add(self.wall7)
+        self.entity_group.add(self.wall8)
+        self.entity_group.add(self.wall9)
