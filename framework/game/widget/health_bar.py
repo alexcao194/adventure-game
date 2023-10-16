@@ -24,6 +24,5 @@ class HealthBar(Widget):
         if(self.entity.alive == False):
             return
         super().__render__(display=display)
-        print(self.current)
         pygame.draw.rect(display, (255, 0, 0), pygame.Rect(self.position.to_tuple(), self.size.to_tuple()))
         pygame.draw.rect(display, (0, 255, 0), pygame.Rect(self.position.to_tuple(), (self.size.x * (self.current / self.max), self.size.y)))
