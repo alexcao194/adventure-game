@@ -3,6 +3,7 @@ from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.characters.player import Player
 from src.characters.monster import Monster
+from src.states.pause import Pause
 from src.map.block import *
 
 class Play(BaseState):
@@ -51,3 +52,12 @@ class Play(BaseState):
         self.entity_group.add(self.block11)
         self.entity_group.add(self.block12)
         self.entity_group.add(self.block13)
+    
+
+    def __update__(self, event):
+        super().__update__(event=event)
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                StateMachine.push(Pause())
+                
