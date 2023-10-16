@@ -41,6 +41,15 @@ class Vector2():
     def distance(self, other):
         return math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)
     
+    def magnitude(self):
+        return math.sqrt(self.x**2 + self.y**2)
+    
+    def normalize(self):
+        mag = self.magnitude()
+        if mag == 0:
+            return Vector2(0, 0)
+        return Vector2(self.x / mag, self.y / mag)
+    
 
 
 

@@ -2,8 +2,8 @@ from framework.framework import *
 from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.characters.player import Player
+from src.characters.monster import Monster
 from src.map.block import *
-
 
 class Play(BaseState):
     def __init__(self):
@@ -52,7 +52,10 @@ class Play(BaseState):
         self.wall3 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(620,253))
         self.wall4 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(757,253))
 
-
+        self.entity_group.add(self.monster_1)
+        self.entity_group.add(self.monster_2)
+        self.entity_group.add(self.monster_3)
+        self.entity_group.add(self.monster_4)
         self.entity_group.add(self.player)
         self.entity_group.add(self.wall1)
         self.entity_group.add(self.block1)
