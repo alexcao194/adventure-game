@@ -51,6 +51,10 @@ class Play(BaseState):
 
         self.wall3 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(620,253))
         self.wall4 = Block(texture=Assets.tt_block_2,hitbox=Vector2(13,227),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(757,253))
+        self.monster_1 = Monster(position=Vector2(100, 300), follower=self.player)
+        self.monster_2 = Monster(position=Vector2(200, 300), follower=self.player)
+        self.monster_3 = Monster(position=Vector2(300, 300), follower=self.player)
+        self.monster_4 = Monster(position=Vector2(400, 300), follower=self.player)
 
         self.entity_group.add(self.monster_1)
         self.entity_group.add(self.monster_2)
