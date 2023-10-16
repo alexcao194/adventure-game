@@ -12,5 +12,8 @@
     "menu_button": "Menu",
     "setting_button": "Cài đặt",
     "start_button": "Bắt đầu",
-    "about_button": "Giới thiệu"
+    "about_button": "Giới thiệu",
+    "lose_message_1": "Bạn đã thua!",
+    "lose_message_2": "Nhấn phím bất kì để chơi lại",
+    "lose_message_3": "Nhấn ESC để trở về màn hình chính"
 }

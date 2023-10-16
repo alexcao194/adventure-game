@@ -12,5 +12,8 @@
     "menu_button": "Menu",
     "setting_button": "Setting",
     "start_button": "Start",
-    "about_button": "About"
+    "about_button": "About",
+    "lose_message_1": "You lose!",
+    "lose_message_2": "Press any key to play again",
+    "lose_message_3": "Press ESC to go back to menu"
 }
