@@ -12,6 +12,7 @@ class Player(Entity):
         self.max_hp = 1000
         self.damage = 100
         self.is_solid = False
+        self.health_bar = HealthBar(size=Vector2(50, 7), entity=self, offset=Vector2(18, -5))
         self.animation_manager = AnimationManager(
             action_animation = {
                 "die": ActionAnimation(entity=self, src=Assets.ani_die, delay=75, frame_count=3),
