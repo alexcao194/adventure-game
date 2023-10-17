@@ -34,15 +34,14 @@ class Play(BaseState):
 
         self.tree1 = Block(texture=Assets.tt_plant_1,hitbox=Vector2(25,25),size=Vector2(240,343),offset=Vector2(100,325),position=Vector2(160,20))
         self.tree2 = Block(texture=Assets.tt_plant_0,hitbox=Vector2(25,25),size=Vector2(290,350),offset = Vector2(122,340), position=Vector2(905,200))
-
         self.stone1 = Block(texture=Assets.tt_stone_9,hitbox=Vector2(150,75),size=Vector2(150,120),offset=Vector2(0,45),position=Vector2(490,570))
-        self.stone2 = Block(texture=Assets.tt_headstone_6,hitbox=Vector2(75,75),size=Vector2(80,115),offset=Vector2(0,45),position=Vector2(432,350))
+        self.stone2 = Block(texture=Assets.tt_headstone_6,hitbox=Vector2(75,70),size=Vector2(80,115),offset=Vector2(0,45),position=Vector2(432,357))
         self.stone3 = Block(texture=Assets.tt_stone_2,hitbox=Vector2(75,45),size=Vector2(75,45),offset=Vector2(0,0),position=Vector2(685,601))
         self.stone4 = Block(texture=Assets.tt_stone_1,hitbox=Vector2(45,40),size=Vector2(45,40),offset=Vector2(0,0),position=Vector2(805,661))
         self.stone5 = Block(texture=Assets.tt_stone_3,hitbox=Vector2(65,50),size=Vector2(65,50),offset=Vector2(0,0),position=Vector2(975,601))
 
         self.bin1 = Block(texture=Assets.tt_bin_2,hitbox=Vector2(55,33),size=Vector2(58,88),offset=Vector2(0,55),position=Vector2(950,459))
-        self.bin2 = Block(texture=Assets.tt_bin_1,hitbox=Vector2(58,65),size=Vector2(58,65),offset=Vector2(0,0),position=Vector2(850,370))
+        self.bin2 = Block(texture=Assets.tt_bin_1,hitbox=Vector2(65,65),size=Vector2(65,65),offset=Vector2(0,0),position=Vector2(850,375))
 
 
         self.wall1 = Block(texture=Assets.tt_block_2,hitbox=Vector2(160,155),size=Vector2(160,155),offset=Vector2(0,0),position=Vector2(460,253))
