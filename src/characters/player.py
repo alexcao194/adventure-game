@@ -60,15 +60,18 @@ class Player(Entity):
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                self.animation_manager.play_action('attack_' + self.orientation)
-                for collision in self.collisions:  
-                        try:
-                            collision.hp -= random.randint(self.damage - 20, self.damage + 20)
-                        except:
-                            pass
+                if(self.animation_manager.current_action_animation == None):
+                    AudioManager.play_effect(Assets.sd_claw)
+                    self.animation_manager.play_action('attack_' + self.orientation)
+                    for collision in self.collisions:  
+                            try:
+                                collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                            except:
+                                pass
             if event.key == pygame.K_p:
                 self.alive = False
                 self.animation_manager.play_action('die')
                 self.animation_manager.change_animation('death')
+                AudioManager.play_effect(Assets.sd_death)
 
         

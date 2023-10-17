@@ -109,3 +109,16 @@ class Assets(Singleton):
    tt_tileset_wall_7 = 'assets/textures/map/tileset_wall/tileset_wall_7.png'
    tt_tileset_wall_8 = 'assets/textures/map/tileset_wall/tileset_wall_8.png'
    tt_tileset_wall_9 = 'assets/textures/map/tileset_wall/tileset_wall_9.png'
+
+# Sounds
+   sd_claw = 'assets/sounds/Attack/Claw.wav'
+   sd_fireball = 'assets/sounds/Attack/Fireball.wav'
+   sd_slash = 'assets/sounds/Attack/Slash.wav'
+   sd_death = 'assets/sounds/Death.wav'
+   sd_fire = 'assets/sounds/Fire.wav'
+   sd_heal = 'assets/sounds/Heal.wav'
+   sd_hit = 'assets/sounds/Hit.wav'
+   sd_home = 'assets/sounds/home.wav'
+   sd_main = 'assets/sounds/Main.ogg'
+   sd_play = 'assets/sounds/play.wav'
+   sd_sword = 'assets/sounds/Sword.wav'

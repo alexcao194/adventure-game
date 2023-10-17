@@ -3,6 +3,8 @@ from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.characters.player import Player
 from src.characters.monster import Monster
+from src.states.pause import Pause
+from src.states.lose import Lose
 from src.map.block import *
 
 class Play(BaseState):
@@ -11,8 +13,7 @@ class Play(BaseState):
 
     def __init_state__(self):
         super().__init_state__()
-
-
+        AudioManager.play_background(Assets.sd_play)
         #Objects
         self.player = Player(position=Vector2(160,421))
         self.block1 = Block(texture=Assets.tt_block_1,hitbox=Vector2(40,100), size=Vector2(53,43), offset=Vector2(0,30),position=Vector2(215,543))
@@ -31,8 +32,8 @@ class Play(BaseState):
 
 
 
-        self.tree1 = Block(texture=Assets.tt_plant_1,hitbox=Vector2(25,25),size=Vector2(230,350),offset=Vector2(100,325),position=Vector2(165,22))
-        self.tree2 = Block(texture=Assets.tt_plant_0,hitbox=Vector2(25,25),size=Vector2(270,360),offset = Vector2(122,340), position=Vector2(915,190))
+        self.tree1 = Block(texture=Assets.tt_plant_1,hitbox=Vector2(25,25),size=Vector2(240,343),offset=Vector2(100,325),position=Vector2(160,20))
+        self.tree2 = Block(texture=Assets.tt_plant_0,hitbox=Vector2(25,25),size=Vector2(290,350),offset = Vector2(122,340), position=Vector2(905,200))
 
         self.stone1 = Block(texture=Assets.tt_stone_9,hitbox=Vector2(150,75),size=Vector2(150,120),offset=Vector2(0,45),position=Vector2(490,570))
         self.stone2 = Block(texture=Assets.tt_headstone_6,hitbox=Vector2(75,75),size=Vector2(80,115),offset=Vector2(0,45),position=Vector2(432,350))
@@ -60,12 +61,10 @@ class Play(BaseState):
         self.glass3 = Block(texture=Assets.tt_plant_6,hitbox=Vector2(0,1),size=Vector2(95,85),offset=Vector2(95,85),position=Vector2(825,160))
         self.glass4 = Block(texture=Assets.tt_block_5,hitbox=Vector2(0,1), size=Vector2(60,75), offset=Vector2(60,55),position=Vector2(401,238))
         
-        
-        
-        self.monster_1 = Monster(position=Vector2(100, 300), follower=self.player)
-        self.monster_2 = Monster(position=Vector2(200, 300), follower=self.player)
-        self.monster_3 = Monster(position=Vector2(300, 300), follower=self.player)
-        self.monster_4 = Monster(position=Vector2(400, 300), follower=self.player)
+        self.monster_1 = Monster(position=Vector2(200, 300), follower=self.player)
+        self.monster_2 = Monster(position=Vector2(500, 300), follower=self.player)
+        self.monster_3 = Monster(position=Vector2(800, 300), follower=self.player)
+        self.monster_4 = Monster(position=Vector2(1100, 300), follower=self.player)
 
         self.entity_group.add(self.monster_1)
         self.entity_group.add(self.monster_2)
@@ -120,4 +119,3 @@ class Play(BaseState):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 StateMachine.push(Pause())
-                
