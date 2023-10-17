@@ -5,7 +5,7 @@ class Player(Entity):
     def __init__(self, position: Vector2):
         super().__init__(hitbox=Vector2(20, 20), position=position, size=Vector2(85, 64), offset=Vector2(33, 30))
         self.orientation = 'opposite'
-        self.show_hitbox = True
+        self.show_hitbox = False
         self.speed = 200
         self.alive = True
         self.hp = 1000
