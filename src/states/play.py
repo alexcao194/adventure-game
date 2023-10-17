@@ -55,9 +55,9 @@ class Play(BaseState):
         self.wall9 = Block(texture=Assets.tt_block_2,hitbox=Vector2(330,15),size=Vector2(13,227),offset=Vector2(0,0),position=Vector2(545,7))
         
         
-        self.glass1 = Block(texture=Assets.tt_plant_4,hitbox=Vector2(0,1),size=Vector2(70,70),offset=Vector2(0,69),position=Vector2(470,80))
+        self.glass1 = Block(texture=Assets.tt_plant_4,hitbox=Vector2(0,1),size=Vector2(80,80),offset=Vector2(0,69),position=Vector2(467,80))
         self.glass2 = Block(texture=Assets.tt_plant_3,hitbox=Vector2(0,1),size=Vector2(60,50),offset=Vector2(0,25),position=Vector2(575,2))
-        self.glass3 = Block(texture=Assets.tt_plant_6,hitbox=Vector2(0,1),size=Vector2(95,85),offset=Vector2(95,85),position=Vector2(825,160))
+        self.glass3 = Block(texture=Assets.tt_plant_6,hitbox=Vector2(0,1),size=Vector2(110,105),offset=Vector2(95,85),position=Vector2(819,154))
         self.glass4 = Block(texture=Assets.tt_block_5,hitbox=Vector2(0,1), size=Vector2(60,75), offset=Vector2(60,55),position=Vector2(401,238))
         
         self.monster_1 = Monster(position=Vector2(200, 300), follower=self.player)
