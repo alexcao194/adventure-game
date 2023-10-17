@@ -28,7 +28,7 @@ class AudioManager(Singleton):
 
     def turn_off_music():
         if AudioManager.background_music:
-            pygame.mixer.stop()
+            pygame.mixer.music.stop()
         AudioManager.is_background_music_on = False
 
     def turn_on_effects():
