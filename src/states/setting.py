@@ -27,7 +27,7 @@ class Setting(BaseState):
         self.viOption = ImageButtonWithIcon(
             position=Vector2(700, 250),
             size=Vector2(200, 60),
-            background=Assets.tt_background_setting_button,
+            background=Assets.tt_background_button,
             icon=Assets.tt_flag_vi,
             text=S().setting_language_vi,
             callback= lambda:self.change_language('vi'),
@@ -37,7 +37,7 @@ class Setting(BaseState):
         self.enOption = ImageButtonWithIcon(
             position=Vector2(950, 250),
             size=Vector2(200, 60),
-            background=Assets.tt_background_setting_button,
+            background=Assets.tt_background_button,
             icon=Assets.tt_flag_uk,
             text=S().setting_language_en,
             callback= lambda:self.change_language('en'),
@@ -46,7 +46,7 @@ class Setting(BaseState):
         
         self.backButton = ImageButton(
             position=Vector2(screenWidth//2 - 120, 600),
-            background=Assets.tt_background_setting_button,
+            background=Assets.tt_background_button,
             text=S().all_back,
             callback= self.onClickBack,
             font_size=28,

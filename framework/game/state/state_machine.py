@@ -17,9 +17,9 @@ class StateMachine(Singleton):
             StateMachine.__current_state__().__on_exit__()
             StateMachine.__states__.pop()
             StateMachine.__current_state__().__on_resume__()
-    # def popUntil(name):
-    #     while(StateMachine.__current_state__().name != name and StateMachine.canPop()):
-    #         StateMachine.pop()
+    def popUntil(name):
+        while(StateMachine.__current_state__().__class__.__name__ != name and StateMachine.canPop()):
+            StateMachine.pop()
     def canPop():
         return StateMachine.__states__.__len__() > 1
     def __current_state__():

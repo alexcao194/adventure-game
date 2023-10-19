@@ -4,7 +4,7 @@ from src.configs.assets import Assets
 from src.characters.player import Player
 from src.characters.monster import Monster
 from src.states.pause import Pause
-from src.states.lose import Lose
+from src.states.loose import Loose
 from src.map.block import *
 
 class Play(BaseState):
@@ -113,7 +113,7 @@ class Play(BaseState):
         super().__update__(event=event)
 
         if(self.player.hp <= 0):
-            StateMachine.push(Lose())
+            StateMachine.push(Loose())
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
