@@ -33,6 +33,7 @@ class Entity:
         self.collisions = []
         self.is_solid = True
         self.rect = pygame.Rect((position + offset).to_tuple(), hitbox.to_tuple())
+        self.health_bar = None
     
     
     def __render__(self, display):
@@ -51,8 +52,13 @@ class Entity:
         
         if(self.show_hitbox):
             pygame.draw.rect(display, (255, 0, 0), self.rect, 1)
+        
+        if(self.health_bar != None):
+            self.health_bar.__render__(display)
 
     def __update__(self, event):
+        if(self.health_bar != None):
+            self.health_bar.__update__(event)
         if(self.isActive == False):
             return
         if(self.animation_manager != None):
@@ -61,6 +67,7 @@ class Entity:
             return
         else:
             raise Exception("Entity must have either animation_manager or texture")
+    
         
     def __on_collision__(self, others):
         self.collisions = others
@@ -81,9 +88,6 @@ class Entity:
                 position.x = other.rect.left - self.hitbox.x - self.offset.x
             elif(horizontal_movement < 0 and self.rect.right >= other.rect.right):
                 position.x = other.rect.right - self.offset.x
-            
-
-
         self.position = position
         self.rect = pygame.Rect((self.position + self.offset).to_tuple(), self.hitbox.to_tuple())
 

@@ -9,6 +9,7 @@ class Home(BaseState):
         super().__init__(background=Assets.tt_background)
     
     def __init_state__(self):
+        AudioManager.play_background(Assets.sd_home)
         super().__init_state__()
         screenWidth = MediaQuery.size.x
         screenHeight = MediaQuery.size.y

@@ -11,10 +11,12 @@ class Monster(Entity):
         self.following = False
         self.is_solid = False
         self.active_range = 200
+        self.max_hp = 500
         self.hp = 500
         self.alive = True
         self.has_dead = False
         self.damage = 60
+        self.health_bar = HealthBar(size=Vector2(50, 5), entity=self, offset=Vector2(25, 5))
         self.animation_manager = AnimationManager(
             action_animation={
                 "attack": ActionAnimation(src=Assets.ani_monster_attack_arround, frame_count=9, delay=75, entity=self),
@@ -63,6 +65,7 @@ class Monster(Entity):
                 if(collision.__class__.__name__ == 'Player'):
                     if(self.animation_manager.current_action_animation == None):
                         self.animation_manager.play_action("attack")
+                        AudioManager.play_effect(Assets.sd_slash)
                         self.follower.hp -= random.randint(self.damage - 10, self.damage + 10)
                     break
 

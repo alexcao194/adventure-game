@@ -5,12 +5,14 @@ class Player(Entity):
     def __init__(self, position: Vector2):
         super().__init__(hitbox=Vector2(20, 20), position=position, size=Vector2(85, 64), offset=Vector2(33, 30))
         self.orientation = 'opposite'
-        self.show_hitbox = True
+        self.show_hitbox = False
         self.speed = 200
         self.alive = True
         self.hp = 1000
+        self.max_hp = 1000
         self.damage = 100
         self.is_solid = False
+        self.health_bar = HealthBar(size=Vector2(50, 7), entity=self, offset=Vector2(18, -5))
         self.animation_manager = AnimationManager(
             action_animation = {
                 "die": ActionAnimation(entity=self, src=Assets.ani_die, delay=75, frame_count=3),
@@ -58,15 +60,18 @@ class Player(Entity):
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                self.animation_manager.play_action('attack_' + self.orientation)
-                for collision in self.collisions:  
-                        try:
-                            collision.hp -= random.randint(self.damage - 20, self.damage + 20)
-                        except:
-                            pass
+                if(self.animation_manager.current_action_animation == None):
+                    AudioManager.play_effect(Assets.sd_claw)
+                    self.animation_manager.play_action('attack_' + self.orientation)
+                    for collision in self.collisions:  
+                            try:
+                                collision.hp -= random.randint(self.damage - 20, self.damage + 20)
+                            except:
+                                pass
             if event.key == pygame.K_p:
                 self.alive = False
                 self.animation_manager.play_action('die')
                 self.animation_manager.change_animation('death')
+                AudioManager.play_effect(Assets.sd_death)
 
         

@@ -51,6 +51,10 @@ def create_texture_assets(name, path, script):
     script.write(f'''   tt_{name.lower()} = '{path.as_posix()}'
 ''')
     
+def create_sound_assets(name, path, script):
+    script.write(f'''   sd_{name.lower()} = '{path.as_posix()}'
+''')
+    
 def genAniPath(path: Path, script):
     isEnd = True
     for file in path.glob('*'):
@@ -67,6 +71,14 @@ def genTexturePath(path: Path, script):
         else:
             name = file.name.split('.')[0]
             create_texture_assets(name, file, script)
+            
+def genSoundPath(path: Path, script):
+    for file in path.glob('*'):
+        if file.is_dir():
+            genSoundPath(file, script)   
+        else:
+            name = file.name.split('.')[0]
+            create_sound_assets(name, file, script)
     
 folder_path = 'assets/'
 folder = Path(folder_path)
@@ -85,6 +97,10 @@ if folder.exists() and folder.is_dir():
     script.write('\n# Textures\n')
     textures_folder = list(folder.glob('textures'))
     genTexturePath(textures_folder[0], script)
+    
+    script.write('\n# Sounds\n')
+    sounds_folder = list(folder.glob('sounds'))
+    genSoundPath(sounds_folder[0], script)
     
 else:
     print(f"Folder does not exist or is not a directory: {folder}")

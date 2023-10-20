@@ -5,6 +5,7 @@ from src.characters.player import Player
 from src.map.circle_struct import CircleStruct
 from src.characters.monster import Monster
 from src.states.pause import Pause
+from src.states.lose import Lose
 from src.map.block import *
 
 class Play(BaseState):
@@ -36,32 +37,56 @@ class Play(BaseState):
         self.monster_3 = Monster(position=Vector2(800, 300), follower=self.player)
         self.monster_4 = Monster(position=Vector2(1100, 300), follower=self.player)
 
-
         self.entity_group.add(self.monster_1)
         self.entity_group.add(self.monster_2)
         self.entity_group.add(self.monster_3)
         self.entity_group.add(self.monster_4)
         self.entity_group.add(self.player)
+        self.entity_group.add(self.wall1)
         self.entity_group.add(self.block1)
         self.entity_group.add(self.block2)
-        self.entity_group.add(self.block)
+        self.entity_group.add(self.block14)
         self.entity_group.add(self.block3)
         self.entity_group.add(self.block4)
         self.entity_group.add(self.block5)
         self.entity_group.add(self.block6)
         self.entity_group.add(self.block7)
         self.entity_group.add(self.block8)
-        # self.entity_group.add(self.block9)  
+        self.entity_group.add(self.glass4)  
         self.entity_group.add(self.block10) 
         self.entity_group.add(self.block11)
         self.entity_group.add(self.block12)
         self.entity_group.add(self.block13)
+        self.entity_group.add(self.tree1)
+        self.entity_group.add(self.tree2)
+        self.entity_group.add(self.stone1)
+        self.entity_group.add(self.stone2)
+        self.entity_group.add(self.stone3)
+        self.entity_group.add(self.stone4)
+        self.entity_group.add(self.stone5)
+        self.entity_group.add(self.bin1)
+        self.entity_group.add(self.bin2)
+        self.entity_group.add(self.wall1)
+        self.entity_group.add(self.wall2)
+        self.entity_group.add(self.wall3)
+        self.entity_group.add(self.wall4)
+        self.entity_group.add(self.wall5)
+        self.entity_group.add(self.wall6)
+        self.entity_group.add(self.wall7)
+        self.entity_group.add(self.wall8)
+        self.entity_group.add(self.wall9)
+        self.entity_group.add(self.glass1)
+        self.entity_group.add(self.glass2)
+        self.entity_group.add(self.glass3)
+        self.entity_group.add(self.glass4)
     
 
     def __update__(self, event):
         super().__update__(event=event)
 
+        if(self.player.hp <= 0):
+            StateMachine.push(Lose())
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 StateMachine.push(Pause())
-                
