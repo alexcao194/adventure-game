@@ -2,6 +2,7 @@ from framework.framework import *
 from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.characters.player import Player
+from src.map.circle_struct import CircleStruct
 from src.characters.monster import Monster
 from src.states.pause import Pause
 from src.map.block import *
@@ -12,7 +13,10 @@ class Play(BaseState):
 
     def __init_state__(self):
         super().__init_state__()
+
         self.player = Player(position=Vector2(160, 421))
+        self.entity_group.add(CircleStruct(player=self.player))
+
         self.block1 = Block1(position=Vector2(215,543))
         self.block2 = Block2(position=Vector2(0,543))
         self.block = Block(position=Vector2(300,703))
