@@ -15,5 +15,7 @@
     "about_button": "About",
     "lose_message_1": "You lose!",
     "lose_message_2": "Press any key to play again",
-    "lose_message_3": "Press ESC to go back to menu"
+    "lose_message_3": "Press ESC to go back to menu",
+    "get_key": "You got a key!",
+    "hint_message": "follow the ground to find the key"
 }

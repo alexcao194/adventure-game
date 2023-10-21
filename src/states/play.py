@@ -7,18 +7,22 @@ from src.states.pause import Pause
 from src.map.circle_struct import CircleStruct
 from src.map.collision_box import CollisionBox
 from src.states.lose import Lose
+from src.map.box import Box
 from src.map.block import *
-from src.states.hint import Hint
 
 class Play(BaseState):
     def __init__(self):
         super().__init__(background=Assets.tt_background)
-        self.datas = []
-        self.message_group = WidgetGroup()
 
     def __init_state__(self):
         super().__init_state__()
         AudioManager.play_background(Assets.sd_play)
+
+        self.datas = []
+        self.message_group = WidgetGroup()
+        self.has_key = False
+        self.has_box = False
+
         #Objects
         self.player = Player(position=Vector2(160,421))
         self.circle_struct = CircleStruct()
@@ -66,10 +70,12 @@ class Play(BaseState):
         self.glass3 = Block(texture=Assets.tt_plant_6,hitbox=Vector2(0,1),size=Vector2(110,105),offset=Vector2(95,85),position=Vector2(819,154))
         self.glass4 = Block(texture=Assets.tt_block_5,hitbox=Vector2(0,1), size=Vector2(60,75), offset=Vector2(60,55),position=Vector2(401,238))
         
-        self.monster_1 = Monster(position=Vector2(200, 300), follower=self.player)
-        self.monster_2 = Monster(position=Vector2(500, 300), follower=self.player)
-        self.monster_3 = Monster(position=Vector2(800, 300), follower=self.player)
-        self.monster_4 = Monster(position=Vector2(1100, 300), follower=self.player)
+        self.monster_1 = Monster(position=Vector2(819, 154), follower=self.player)
+        self.monster_2 = Monster(position=Vector2(467, 80), follower=self.player)
+        self.monster_3 = Monster(position=Vector2(500, 400), follower=self.player)
+        self.monster_4 = Monster(position=Vector2(800, 400), follower=self.player)
+        self.monster_5 = Monster(position=Vector2(865, 650), follower=self.player)
+        self.monster_6 = Monster(position=Vector2(1050, 600), follower=self.player)
 
 
         self.pos_1 = CollisionBox(position=Vector2(680,50), value=1)
@@ -82,6 +88,8 @@ class Play(BaseState):
         self.entity_group.add(self.monster_2)
         self.entity_group.add(self.monster_3)
         self.entity_group.add(self.monster_4)
+        self.entity_group.add(self.monster_5)
+        self.entity_group.add(self.monster_6)
         self.entity_group.add(self.player)
         self.entity_group.add(self.wall1)
         self.entity_group.add(self.block1)
@@ -138,16 +146,26 @@ class Play(BaseState):
 
             if(event.key == pygame.K_f):
                 if(self.bin2 in self.player.collisions):
-                    StateMachine.push(Hint([
-                        "Linh hồn của bạn sẽ được dẫn lối bởi những kí tự cổ xưa",
-                        "Chúng ta sẽ tới nơi phế tích, đi về phía những ngọn cây"
-                        "Bạn sẽ thấy một vết nứt"
-                    ]))
+                    self.send_message(S().hint_message)
+            
+            if self.has_box and not self.box.is_active and self.player in self.box.collisions and event.key == pygame.K_f:
+                self.box.change_state()
+                self.has_key = True
+                self.send_message(S().get_key)
+
         for collision in self.player.collisions:
             if(isinstance(collision, CollisionBox)):
                 if(collision.value not in self.circle_struct.positions):
                     self.circle_struct.positions.append(collision.value)
                     self.send_message(self.circle_struct.positions.__str__())
+
+        if self.player.position.x > 1200 or self.player.position.y > 800:
+            self.__init_state__()
+
+        if self.circle_struct.is_active and not self.has_box:
+            self.has_box = True
+            self.box = Box()
+            self.entity_group.add(self.box)
             
     def __render__(self, display):
         super().__render__(display=display)

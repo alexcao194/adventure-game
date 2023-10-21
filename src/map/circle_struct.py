@@ -20,7 +20,7 @@ class CircleStruct(Entity):
         self.is_active = True
     
     def check(self):
-        check_list = [3, 4, 1, 2]
+        check_list = [3, 4, 2, 1]
         if(len(self.positions) != len(check_list)):
             return False
         for i in range(len(self.positions)):
