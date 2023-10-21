@@ -15,5 +15,7 @@
     "about_button": "Giới thiệu",
     "lose_message_1": "Bạn đã thua!",
     "lose_message_2": "Nhấn phím bất kì để chơi lại",
-    "lose_message_3": "Nhấn ESC để trở về màn hình chính"
+    "lose_message_3": "Nhấn ESC để trở về màn hình chính",
+    "get_key": "Bạn đã nhận được chìa khóa!",
+    "hint_message": "Nhìn vào mặt đất để tìm chìa khóa"
 }
