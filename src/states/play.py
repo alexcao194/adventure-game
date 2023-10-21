@@ -4,18 +4,24 @@ from src.configs.assets import Assets
 from src.characters.player import Player
 from src.characters.monster import Monster
 from src.states.pause import Pause
+from src.map.circle_struct import CircleStruct
+from src.map.collision_box import CollisionBox
 from src.states.loose import Loose
 from src.map.block import *
+from src.states.hint import Hint
 
 class Play(BaseState):
     def __init__(self):
         super().__init__(background=Assets.tt_background)
+        self.datas = []
+        self.message_group = WidgetGroup()
 
     def __init_state__(self):
         super().__init_state__()
         AudioManager.play_background(Assets.sd_play)
         #Objects
         self.player = Player(position=Vector2(160,421))
+        self.circle_struct = CircleStruct()
         self.block1 = Block(texture=Assets.tt_block_1,hitbox=Vector2(40,100), size=Vector2(53,43), offset=Vector2(0,30),position=Vector2(215,543))
         self.block2 = Block(texture=Assets.tt_block_2,hitbox=Vector2(300,300), size=Vector2(0,1), offset=Vector2(0,23),position=Vector2(0,543))
         self.block3 = Block(texture=Assets.tt_block_3,hitbox=Vector2(0,1), size=Vector2(80,175), offset=Vector2(0,50),position=Vector2(420,680))
@@ -32,8 +38,8 @@ class Play(BaseState):
 
 
 
-        self.tree1 = Block(texture=Assets.tt_plant_1,hitbox=Vector2(25,25),size=Vector2(240,343),offset=Vector2(100,325),position=Vector2(160,20))
-        self.tree2 = Block(texture=Assets.tt_plant_0,hitbox=Vector2(25,25),size=Vector2(290,350),offset = Vector2(122,340), position=Vector2(905,200))
+        self.tree1 = Block(texture=Assets.tt_plant_1,hitbox=Vector2(25,25),size=Vector2(240,343),offset=Vector2(105,320),position=Vector2(160,20))
+        self.tree2 = Block(texture=Assets.tt_plant_0,hitbox=Vector2(25,25),size=Vector2(290,350),offset = Vector2(130,330), position=Vector2(905,200))
         self.stone1 = Block(texture=Assets.tt_stone_9,hitbox=Vector2(150,75),size=Vector2(150,120),offset=Vector2(0,45),position=Vector2(490,570))
         self.stone2 = Block(texture=Assets.tt_headstone_6,hitbox=Vector2(75,70),size=Vector2(80,115),offset=Vector2(0,45),position=Vector2(432,357))
         self.stone3 = Block(texture=Assets.tt_stone_2,hitbox=Vector2(75,45),size=Vector2(75,45),offset=Vector2(0,0),position=Vector2(685,601))
@@ -65,6 +71,13 @@ class Play(BaseState):
         self.monster_3 = Monster(position=Vector2(800, 300), follower=self.player)
         self.monster_4 = Monster(position=Vector2(1100, 300), follower=self.player)
 
+
+        self.pos_1 = CollisionBox(position=Vector2(680,50), value=1)
+        self.pos_2 = CollisionBox(position=Vector2(680 + 85,115), value=2)
+        self.pos_3 = CollisionBox(position=Vector2(680,180), value=3)
+        self.pos_4 = CollisionBox(position=Vector2(680 - 85,115), value=4)
+
+        self.entity_group.add(self.circle_struct)   
         self.entity_group.add(self.monster_1)
         self.entity_group.add(self.monster_2)
         self.entity_group.add(self.monster_3)
@@ -107,10 +120,14 @@ class Play(BaseState):
         self.entity_group.add(self.glass2)
         self.entity_group.add(self.glass3)
         self.entity_group.add(self.glass4)
-    
+        self.entity_group.add(self.pos_1)
+        self.entity_group.add(self.pos_2)
+        self.entity_group.add(self.pos_3)
+        self.entity_group.add(self.pos_4)
 
     def __update__(self, event):
         super().__update__(event=event)
+        self.message_group.__update__(event=event)
 
         if(self.player.hp <= 0):
             StateMachine.push(Loose())
@@ -118,3 +135,29 @@ class Play(BaseState):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 StateMachine.push(Pause())
+
+            if(event.key == pygame.K_f):
+                if(self.bin2 in self.player.collisions):
+                    StateMachine.push(Hint([
+                        "Linh hồn của bạn sẽ được dẫn lối bởi những kí tự cổ xưa",
+                        "Chúng ta sẽ tới nơi phế tích, đi về phía những ngọn cây"
+                        "Bạn sẽ thấy một vết nứt"
+                    ]))
+        for collision in self.player.collisions:
+            if(isinstance(collision, CollisionBox)):
+                if(collision.value not in self.circle_struct.positions):
+                    self.circle_struct.positions.append(collision.value)
+                    self.send_message(self.circle_struct.positions.__str__())
+            
+    def __render__(self, display):
+        super().__render__(display=display)
+        self.message_group.__render__(display=display)
+    
+    def send_message(self, message: str):
+        self.datas.append(message)
+        if(len(self.datas) > 5):
+            self.datas.pop(0)
+        
+        self.message_group.widgets.clear()
+        for i in range(len(self.datas)):
+            self.message_group.add(Text(text=self.datas[i], position=Vector2(1000, 0 + i * 17), size=Vector2(100, 100), color=(255, 255, 255), font_size=15))
