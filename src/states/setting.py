@@ -72,6 +72,7 @@ class Setting(BaseState):
             size=Vector2(50, 50),
             selected_src=Assets.tt_background_setting_toggle_music_off,
             unselected_src=Assets.tt_background_setting_toggle_music_on,
+            selected= not AudioManager.is_background_music_on,
             callback= self.onToggleMusic
         )
         
@@ -80,6 +81,7 @@ class Setting(BaseState):
             size=Vector2(50, 50),
             selected_src=Assets.tt_background_setting_toggle_audio_off,
             unselected_src=Assets.tt_background_setting_toggle_audio_on,
+            selected= not AudioManager.is_sound_effects_on,
             callback= self.onToggleAudio
         )
         

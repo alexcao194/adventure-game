@@ -14,6 +14,7 @@ from framework.core.singleton import *
 from framework.core.logger import *
 from framework.core.localization import *
 from framework.core.audio_manager import *
+from framework.core.local_strorage import *
 from framework.utils.media_query import *
 from framework.game.widget.widget import *
 from framework.game.widget.widget_group import *

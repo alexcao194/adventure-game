@@ -16,7 +16,7 @@ class CheckBox(Widget):
     exp: def callback(selected: bool):
             pass
     '''
-    def __init__(self, position: Vector2 = None, size: Vector2 = None, selected_src: str = None, unselected_src: str = None, callback: callable = None):
+    def __init__(self, position: Vector2 = None, size: Vector2 = None, selected_src: str = None, unselected_src: str = None, selected: bool = False, callback: callable = None):
         super().__init__(position=position, size=size)
         if(selected_src == None):
             self.selected_src = Assets.ic_selected_check_box
@@ -28,7 +28,7 @@ class CheckBox(Widget):
             self.unselected_src = unselected_src
         if not callable(callback):
             raise Exception("Callback must be callable")
-        self.selected = False
+        self.selected = selected
         self.callback = callback
         self.__init_image__()
     

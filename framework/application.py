@@ -5,6 +5,7 @@ from framework.game.state.base_state import BaseState
 from framework.game.state.state_machine import StateMachine
 from framework.utils.media_query import MediaQuery
 from framework.core.localization import Localization
+from framework.core.local_strorage import LocalStorage
 
 class Application:
     """
@@ -19,7 +20,8 @@ class Application:
         self.display = pygame.display.set_mode(MediaQuery.size.to_tuple())
         self.clock = pygame.time.Clock()
         self.isActive = True
-        self.__current_language__ = 'en'
+        Localization.language = LocalStorage.get_value('language', 'en')
+        self.__current_language__ = Localization.language
         pygame.init()
         
     def init_state(self, init_state: BaseState):
@@ -39,6 +41,7 @@ class Application:
         Clock.__update__(event)
         if(self.__current_language__ != Localization.language):
             self.__current_language__ = Localization.language
+            LocalStorage.put_value('language', Localization.language)
             StateMachine.__rebuild_stack__()
         StateMachine.__current_state__().__update__(event)
 
