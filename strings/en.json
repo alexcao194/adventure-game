@@ -13,5 +13,7 @@
     "setting_language_en": "English",
     "setting_language_vi": "Vietnamese",
 
-    "loose_gameover": "Game over!"
+    "loose_gameover": "Game over!",
+    "get_key": "You got a key!",
+    "hint_message": "follow the ground to find the key"
 }
