@@ -6,7 +6,7 @@ from src.characters.monster import Monster
 from src.states.pause import Pause
 from src.map.circle_struct import CircleStruct
 from src.map.collision_box import CollisionBox
-from src.states.lose import Lose
+from src.states.loose import Loose
 from src.map.box import Box
 from src.map.block import *
 
@@ -138,7 +138,7 @@ class Play(BaseState):
         self.message_group.__update__(event=event)
 
         if(self.player.hp <= 0):
-            StateMachine.push(Lose())
+            StateMachine.push(Loose())
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:

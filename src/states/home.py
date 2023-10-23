@@ -16,8 +16,8 @@ class Home(BaseState):
         
         self.continueButton = ImageButton(
             position=Vector2(screenWidth//2 - 120, 200),
-            background=Assets.tt_background_setting_button,
-            text=S().start_button,
+            background=Assets.tt_background_button,
+            text=S().all_start,
             callback= self.start_game,
             font_size=28,
             scale=1.5
@@ -25,8 +25,8 @@ class Home(BaseState):
 
         self.restartButton = ImageButton(
             position=Vector2(screenWidth//2 - 120, 300),
-            background=Assets.tt_background_setting_button,
-            text=S().continue_button,
+            background=Assets.tt_background_button,
+            text=S().all_continue,
             callback= self.continue_game,
             font_size=28,
             scale=1.5
@@ -34,8 +34,8 @@ class Home(BaseState):
 
         self.menuButton = ImageButton(
             position=Vector2(screenWidth//2 - 120, 400),
-            background=Assets.tt_background_setting_button,
-            text=S().setting_button,
+            background=Assets.tt_background_button,
+            text=S().all_settings,
             callback= self.open_setting,
             font_size=28,
             scale=1.5
@@ -44,8 +44,8 @@ class Home(BaseState):
 
         self.settingButton = ImageButton(
             position=Vector2(screenWidth//2 - 120, 500),
-            background=Assets.tt_background_setting_button,
-            text=S().about_button,
+            background=Assets.tt_background_button,
+            text=S().all_about,
             callback= self.open_about,
             font_size=28,
             scale=1.5
