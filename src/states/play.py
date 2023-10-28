@@ -8,6 +8,7 @@ from src.map.circle_struct import CircleStruct
 from src.map.collision_box import CollisionBox
 from src.states.lose import Lose
 from src.map.box import Box
+from src.states.win import Win
 from src.map.block import *
 
 class Play(BaseState):
@@ -160,6 +161,8 @@ class Play(BaseState):
                     self.send_message(self.circle_struct.positions.__str__())
 
         if self.player.position.x > 1200 or self.player.position.y > 800:
+            if(self.has_key):
+                StateMachine.push(Win())
             self.__init_state__()
 
         if self.circle_struct.is_active and not self.has_box:
