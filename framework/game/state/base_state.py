@@ -40,7 +40,7 @@ class BaseState:
         '''
         Init is called when the state is created.
         '''
-        self.__background_image__ = pygame.image.load(self.__background_asset__)
+        self.__background_image__ = pygame.image.load(self.__background_asset__) # 
         width = self.__background_image__.get_width()
         height = self.__background_image__.get_height()
         # transform with original aspect ratio

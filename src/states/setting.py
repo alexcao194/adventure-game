@@ -4,7 +4,7 @@ from src.configs.assets import Assets
 
 class Setting(BaseState):
     def __init__(self):
-        super().__init__(background=Assets.tt_background_setting)
+        super().__init__(background=Assets.tt_background_loose)
     
     def __init_state__(self):
         super().__init_state__()
@@ -14,7 +14,7 @@ class Setting(BaseState):
             position=Vector2(screenWidth//2, 50),
             size=Vector2(30, 30),
             text=S().all_settings,
-            font_size=80
+            font_size=80, 
         )
         
         self.chooseLanguageTitle = Text(

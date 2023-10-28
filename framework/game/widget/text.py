@@ -22,6 +22,17 @@ class Text(Widget):
         self.font = pygame.font.Font(font, font_size)
         self.color = color
     
+    def set_text(self, text):
+        self.text = text
+        return self
     def __render__(self, display):
-        text = self.font.render(self.text, True, self.color)
-        display.blit(text, (self.position.x + self.size.x / 2 - text.get_width() / 2, self.position.y + self.size.y / 2 - text.get_height() / 2))
+        lines = self.text.splitlines() 
+        if(len(lines) > 1):
+            y_offset = 0
+            for i, line in enumerate(lines):
+                text = self.font.render(line, True, self.color)
+                display.blit(text, (self.position.x//3, self.position.y + y_offset))
+                y_offset += (self.font.get_height() + 10)
+        else:
+            text = self.font.render(self.text, True, self.color)
+            display.blit(text, (self.position.x + self.size.x / 2 - text.get_width() / 2, self.position.y + self.size.y / 2 - text.get_height() / 2))

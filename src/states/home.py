@@ -3,6 +3,7 @@ from framework.core.localization import Localization as S
 from src.configs.assets import Assets
 from src.states.setting import Setting
 from src.states.play import Play
+from src.states.about import About
 
 class Home(BaseState):
     def __init__(self):
@@ -69,5 +70,5 @@ class Home(BaseState):
         StateMachine.push(Setting())
     
     def open_about(self):
-        # StateMachine().push(About())
+        StateMachine.push(About())
         pass
