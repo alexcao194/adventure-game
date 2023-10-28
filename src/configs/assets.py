@@ -40,6 +40,7 @@ class Assets(Singleton):
    tt_button_close = 'assets/textures/background/button_close.png'
    tt_background_loose = 'assets/textures/background/background_loose.png'
    tt_background_setting = 'assets/textures/background/background_setting.jpg'
+   tt_background_about = 'assets/textures/background/background_about.png'
    tt_background_setting_toggle_audio_off = 'assets/textures/background/background_setting_toggle_audio_off.png'
    tt_background_setting_toggle_music_off = 'assets/textures/background/background_setting_toggle_music_off.png'
    tt_box_0 = 'assets/textures/map/props/box/box_0.png'
@@ -111,6 +112,8 @@ class Assets(Singleton):
    tt_plant_8 = 'assets/textures/map/plants/plant_8.png'
    tt_plant_3 = 'assets/textures/map/plants/plant_3.png'
    tt_hero_death = 'assets/textures/hero/death/hero_death.png'
+   tt_hero_attack = 'assets/textures/hero/attack/hero_attack.png'
+   tt_monster_stand = 'assets/textures/monster/monster_stand.png'
 
 # Sounds
    sd_play = 'assets/sounds/play.wav'
