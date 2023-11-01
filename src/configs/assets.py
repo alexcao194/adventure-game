@@ -114,6 +114,8 @@ class Assets(Singleton):
    tt_hero_death = 'assets/textures/hero/death/hero_death.png'
    tt_hero_attack = 'assets/textures/hero/attack/hero_attack.png'
    tt_monster_stand = 'assets/textures/monster/monster_stand.png'
+   tt_background_firework_1 = 'assets/textures/background/background_firework_1.png'
+   tt_background_firework_2 = 'assets/textures/background/background_firework_2.png'
 
 # Sounds
    sd_play = 'assets/sounds/play.wav'

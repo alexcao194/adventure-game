@@ -10,7 +10,7 @@ class Localization(Singleton):
             'all_back': 'Back', 
             'all_continue': 'Continue', 
             'all_restart': 'Restart', 
-            'all_menu': 'Menu', 
+            'all_menu': 'Home', 
             'all_start': 'Start', 
             'all_about': 'About', 
             'setting_audio_toggle': 'Audio Effects', 
@@ -41,6 +41,8 @@ class Localization(Singleton):
                 to open the chest and get the key to exit the loop.
                 Good luck!
                 ''',
+            'win_message_1': 'Defeat',
+            'win_message_2': 'Congratulations, you have escaped the loop!!!'    
         },
         'vi': {
             'all_settings': 'Cài đặt', 
@@ -77,7 +79,9 @@ class Localization(Singleton):
                 ->  Khi miệng giếng sáng lên, chiếc rương bị ẩn sẽ hiện ra. Ấn "f" để mở rương và 
                 lấy chìa khóa thoát khỏi vòng lặp. 
                 Chúc bạn may mắn!
-                '''
+                ''',
+            'win_message_1': 'Chiến thắng', 
+            'win_message_2': 'Chúc mừng bạn đã thoát khỏi vòng lặp!!!'           
             }
     }
 
@@ -152,5 +156,11 @@ class Localization(Singleton):
     @property
     def all_game_instructions(self):
         return Localization.strings[Localization.language]['all_game_instructions']
+    @property
+    def win_message_1(self):
+        return Localization.strings[Localization.language]['win_message_1']
+    @property
+    def win_message_2(self):
+        return Localization.strings[Localization.language]['win_message_2']
     
     

@@ -4,6 +4,7 @@ from src.configs.assets import Assets
 from src.states.setting import Setting
 from src.states.play import Play
 from src.states.about import About
+from src.states.win import Win
 
 class Home(BaseState):
     def __init__(self):
