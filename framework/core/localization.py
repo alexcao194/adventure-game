@@ -41,7 +41,7 @@ class Localization(Singleton):
                 to open the chest and get the key to exit the loop.
                 Good luck!
                 ''',
-            'win_message_1': 'Defeat',
+            'win_message_1': 'Victory',
             'win_message_2': 'Congratulations, you have escaped the loop!!!'    
         },
         'vi': {
@@ -49,7 +49,7 @@ class Localization(Singleton):
             'all_back': 'Quay lại', 
             'all_continue': 'Tiếp tục', 
             'all_restart': 'Chơi lại', 
-            'all_menu': 'Màn hình chính', 
+            'all_menu': 'Trang chủ', 
             'all_start': 'Bắt đầu', 
             'all_about': 'Giới thiệu', 
             'setting_audio_toggle': 'Hiệu ứng âm thanh', 
